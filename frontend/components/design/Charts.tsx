@@ -1,5 +1,5 @@
 'use client';
-import { useId, useRef, useState, type Ref } from 'react';
+import { useId, useLayoutEffect, useRef, useState, type Ref } from 'react';
 import type { DesignResult, LayerKey, UnboundKey } from '@/lib/types';
 import { fixed, thousands } from '@/lib/design-defaults';
 import { Download } from '../icons';
@@ -40,6 +40,13 @@ function propertyText(result: DesignResult, key: LayerKey, a: number, m: number,
   return `${coefficient} · m${subscript(n)} ${fixed(m, 2)}${cbr !== undefined ? ` · ${result.cbrIsEstimated ? '≈' : ''}CBR ${fixed(cbr, 0)} %` : ''}`;
 }
 
+/** Subgrade line: CBR and/or MR. */
+function subgradeProperty(result: DesignResult): string {
+  const mr = result.mrPsi.subgrade, cbr = result.cbr.subgrade;
+  return [cbr !== undefined ? `${result.cbrIsEstimated ? '≈' : ''}CBR ${fixed(cbr, 1)} %` : '', mr ? `MR ${thousands(mr)} psi` : '']
+    .filter(Boolean).join(' · ');
+}
+
 function niceStep(total: number) {
   for (const step of [10, 20, 25, 50, 100, 150, 200, 250, 500]) if (total / step <= 8) return step;
   return 1000;
@@ -49,13 +56,15 @@ function niceStep(total: number) {
  * Realistic pavement cross-section: textured layers drawn to scale (thin layers get a minimum height),
  * labels with leader lines, a depth scale and a legend. Only the layers in the result are drawn.
  */
-export function CrossSection({ result, ref, title = true }: { result: DesignResult; ref?: Ref<SVGSVGElement>; title?: boolean }) {
+export function CrossSection({ result, ref, title = true, compact = false }:
+  { result: DesignResult; ref?: Ref<SVGSVGElement>; title?: boolean; compact?: boolean }) {
   const prefix = `ps${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
 
-  const W = 700;
-  const titleH = title ? 44 : 8;
+  // compact = phone-width drawing: blocks, depth scale and numbered layers (the names are listed under it in HTML).
+  const W = compact ? 310 : 700;
+  const titleH = title && !compact ? 44 : 8;
   const depth = 14, skew = 22;                     // 3-D top and side faces
-  const x0 = 78, bw = 240;                        // front face of the block
+  const x0 = compact ? 54 : 78, bw = compact ? 200 : 240;   // front face of the block
   const top = titleH + depth + 6;                 // top edge of the front face
   const pavementPx = 300, minPx = 10, subgradePx = 78;
   const total = result.totalThicknessMm || 1;
@@ -74,17 +83,14 @@ export function CrossSection({ result, ref, title = true }: { result: DesignResu
     y += h;
   }
   const pavementBottom = y;
-  const subgradeMr = result.mrPsi.subgrade;
-  const subgradeCbr = result.cbr.subgrade;
   blocks.push({
     key: 'subgrade', name: 'Subgrade', thicknessMm: null, ok: true, y, h: subgradePx, clamped: false,
-    property: [subgradeCbr !== undefined ? `${result.cbrIsEstimated ? '≈' : ''}CBR ${fixed(subgradeCbr, 1)} %` : '',
-      subgradeMr ? `MR ${thousands(subgradeMr)} psi` : ''].filter(Boolean).join(' · '),
+    property: subgradeProperty(result),
   });
   const blockBottom = y + subgradePx;
 
   // Labels: start level with the layer middle, then push apart so two-line labels never overlap.
-  const gap = 38;
+  const gap = compact ? 24 : 38;
   const labelY: number[] = [];
   blocks.forEach((b, i) => labelY.push(Math.max(b.y + b.h / 2, i ? labelY[i - 1] + gap : top + 8)));
   const labelX = x0 + bw + skew + 34;
@@ -109,18 +115,19 @@ export function CrossSection({ result, ref, title = true }: { result: DesignResu
   const legendTop = Math.max(blockBottom, labelY[labelY.length - 1] + 22) + 30;
   const perRow = 3, legendRowH = 24, legendColW = (W - x0 + 40) / perRow;
   const legendRows = Math.ceil(blocks.length / perRow);
-  const H = legendTop + legendRows * legendRowH + (anyClamped ? 22 : 6);
+  const H = compact ? Math.max(blockBottom, labelY[labelY.length - 1] + 14) + 6
+    : legendTop + legendRows * legendRowH + (anyClamped ? 22 : 6);
 
   const fadeMask = `url(#${prefix}-fade-mask)`;
   const summary = blocks.map((b) => `${b.name}${b.thicknessMm !== null ? ` ${fixed(b.thicknessMm, 0)} mm` : ''}`).join(', ');
 
   return (
-    <svg ref={ref} viewBox={`0 0 ${W} ${H}`} width={W} height={H} className="h-auto w-full min-w-[560px] text-ink"
+    <svg ref={ref} viewBox={`0 0 ${W} ${H}`} width={W} height={H} className={`h-auto w-full text-ink ${compact ? '' : 'min-w-[560px]'}`}
       role="img" aria-labelledby={`${prefix}-title`} style={{ fontFamily: SANS }} xmlns="http://www.w3.org/2000/svg">
       <title id={`${prefix}-title`}>{`Pavement cross-section: ${summary}. Total ${fixed(result.totalThicknessMm, 1)} mm.`}</title>
       <PavementDefs prefix={prefix} />
 
-      {title && (
+      {title && !compact && (
         <g>
           <text x={0} y={18} fontSize={15} fontWeight={650} fill={INK}>Pavement structure</text>
           <text x={0} y={36} fontSize={11.5} fill={INK} fillOpacity={0.62}>
@@ -186,8 +193,22 @@ export function CrossSection({ result, ref, title = true }: { result: DesignResu
         <text x={x0 - 27} y={pavementBottom + 3.5} textAnchor="end" stroke="none" fontWeight={700}>{fixed(total, 0)}</text>
       </g>
 
+      {/* Compact: a numbered badge per layer, matching the list under the drawing. */}
+      {compact && blocks.map((b, i) => {
+        const anchorX = x0 + bw + skew - 6, anchorY = b.y + b.h / 2 - depth / 2;
+        const cx = x0 + bw + skew + 20, cy = labelY[i];
+        return (
+          <g key={`badge-${b.key}`}>
+            <circle cx={anchorX} cy={anchorY} r={2.2} fill={INK} />
+            <polyline points={`${anchorX},${anchorY} ${cx - 11},${cy}`} fill="none" stroke={INK} strokeOpacity={0.4} strokeWidth={1} />
+            <circle cx={cx} cy={cy} r={10} fill={b.ok ? INK : BAD} />
+            <text x={cx} y={cy + 4.5} fontSize={12.5} fontWeight={700} textAnchor="middle" fill="var(--surface, #fff)">{i + 1}</text>
+          </g>
+        );
+      })}
+
       {/* Labels with leader lines. */}
-      {blocks.map((b, i) => {
+      {!compact && blocks.map((b, i) => {
         const anchorY = b.y + b.h / 2 - depth / 2;
         const ly = labelY[i];
         return (
@@ -212,7 +233,7 @@ export function CrossSection({ result, ref, title = true }: { result: DesignResu
       })}
 
       {/* Legend. */}
-      <g fontSize={11.5}>
+      {!compact && <g fontSize={11.5}>
         <line x1={0} x2={W} y1={legendTop - 16} y2={legendTop - 16} stroke={INK} strokeOpacity={0.12} />
         {blocks.map((b, i) => {
           const lx = (i % perRow) * legendColW, ly = legendTop + Math.floor(i / perRow) * legendRowH;
@@ -229,7 +250,7 @@ export function CrossSection({ result, ref, title = true }: { result: DesignResu
             Drawn to scale; very thin layers are enlarged to stay visible (the depth scale follows the drawing).
           </text>
         )}
-      </g>
+      </g>}
     </svg>
   );
 }
@@ -293,14 +314,25 @@ export async function downloadPng(svg: SVGSVGElement, name = 'pavement-structure
 /** Card with the cross-section and its PNG / SVG export buttons. */
 export function CrossSectionPanel({ result, fileName = 'pavement-structure' }: { result: DesignResult; fileName?: string }) {
   const svgRef = useRef<SVGSVGElement>(null);
+  const boxRef = useRef<HTMLDivElement>(null);
   const [busy, setBusy] = useState(false);
-  const button = 'inline-flex h-9 items-center gap-1.5 rounded-full border border-line-strong bg-surface px-3.5 text-xs font-semibold text-ink transition hover:bg-raised disabled:opacity-50';
+  // Narrow space (phones): show the compact drawing that fits the screen instead of a sideways-scrolling one.
+  const [compact, setCompact] = useState(false);
+  useLayoutEffect(() => {
+    const box = boxRef.current;
+    if (!box) return;
+    const observer = new ResizeObserver(([entry]) => setCompact(entry.contentRect.width < 560));
+    observer.observe(box);
+    return () => observer.disconnect();
+  }, []);
+
+  const button = 'inline-flex h-9 items-center gap-1.5 rounded-full border border-line-strong bg-surface px-3.5 text-[13px] font-semibold text-ink transition hover:bg-raised disabled:opacity-50';
   return (
     <section className="shadow-card rounded-2xl border border-line bg-surface p-5 sm:p-6">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="font-semibold text-ink">Cross-section</h2>
-          <p className="text-xs text-muted">Layers to scale with materials and key properties. Exports print on white.</p>
+          <p className="text-[13px] text-muted">Layers to scale with materials and key properties. Exports print on white.</p>
         </div>
         <div className="flex gap-2">
           <button type="button" className={button} disabled={busy}
@@ -312,10 +344,49 @@ export function CrossSectionPanel({ result, fileName = 'pavement-structure' }: {
           </button>
         </div>
       </div>
-      <div className="-mx-1 overflow-x-auto px-1">
-        <CrossSection result={result} ref={svgRef} />
+      <div ref={boxRef}>
+        {compact && <CompactCrossSection result={result} />}
+        {/* The full drawing is what PNG / SVG export, so it stays in the page (hidden) on narrow screens. */}
+        <div className={compact ? 'hidden' : '-mx-1 overflow-x-auto px-1'}>
+          <CrossSection result={result} ref={svgRef} />
+        </div>
       </div>
     </section>
+  );
+}
+
+/** Phone layout: summary line, the narrow drawing, then one numbered line per layer in normal-size text. */
+function CompactCrossSection({ result }: { result: DesignResult }) {
+  const rows = [
+    ...result.layers.filter((l) => l.thicknessMm > 0).map((l) => ({
+      key: l.key as MaterialKey, name: l.name, thicknessMm: l.thicknessMm as number | null, ok: l.checkOk,
+      property: propertyText(result, l.key, l.a, l.m, l.coefficientSymbol),
+    })),
+    { key: 'subgrade' as MaterialKey, name: 'Subgrade', thicknessMm: null, ok: true, property: subgradeProperty(result) },
+  ];
+  return (
+    <div>
+      <p className="num mb-3 text-[13px] text-muted">
+        SN {fixed(result.totalSn)} provided / {fixed(result.requiredTotalSn)} required · {fixed(result.totalThicknessMm, 0)} mm ·{' '}
+        <span className={`font-semibold ${result.adequate ? 'text-ok' : 'text-bad'}`}>{result.adequate ? 'ADEQUATE' : 'NOT ADEQUATE'}</span>
+      </p>
+      <CrossSection result={result} compact />
+      <ol className="mt-4 space-y-2.5">
+        {rows.map((row, i) => (
+          <li key={row.key} className="flex gap-3">
+            <span className={`num mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-[13px] font-bold text-surface ${row.ok ? 'bg-ink' : 'bg-bad'}`}>{i + 1}</span>
+            <div className="min-w-0">
+              <p className={row.ok ? 'text-ink' : 'text-bad'}>
+                <span className="font-semibold">{row.name}</span>
+                {row.thicknessMm !== null && <span className="num font-semibold"> · {fixed(row.thicknessMm, 0)} mm</span>}
+                {!row.ok && <span className="font-semibold"> · NOT OK</span>}
+              </p>
+              <p className="text-[13px] text-muted">{MATERIALS[row.key].material} · <span className="num">{row.property}</span></p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </div>
   );
 }
 

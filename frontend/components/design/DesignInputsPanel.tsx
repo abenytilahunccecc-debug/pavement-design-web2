@@ -63,8 +63,8 @@ export function DesignInputsPanel({ inputs, result, update, setValidity }: Props
       <Section number={2} title="Pavement structure">
         {([['useDbmLayer', 'DBM layer (Dense Bituminous Macadam) under the AC course'],
           ['useCappingLayer', 'Capping layer above the subgrade']] as const).map(([field, label]) => (
-          <label key={field} className="mb-2 flex cursor-pointer items-start gap-2.5 text-sm text-ink">
-            <input type="checkbox" className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--ink)]" checked={inputs[field]}
+          <label key={field} className="mb-2 flex min-h-7 cursor-pointer items-start gap-2.5 py-0.5 text-sm text-ink">
+            <input type="checkbox" className="h-5 w-5 shrink-0 accent-[var(--ink)]" checked={inputs[field]}
               onChange={(e) => update({ [field]: e.target.checked } as Partial<DesignInput>)} />
             {label}
           </label>
@@ -81,7 +81,7 @@ export function DesignInputsPanel({ inputs, result, update, setValidity }: Props
             </button>
           ))}
         </div>
-        <p className="mb-3 text-xs text-muted">
+        <p className="mb-3 text-[13px] text-muted">
           {inputs.mrMethod === 'cbr'
             ? 'MR = 1500·CBR (CBR ≤ 5 %), else 145·17.6·CBR^0.64 psi, for base, subbase, capping and subgrade. The DBM is asphalt: its MR is always entered directly.'
             : 'Enter each layer\'s resilient modulus in psi. The CBR shown is only an estimate.'}
@@ -103,7 +103,7 @@ export function DesignInputsPanel({ inputs, result, update, setValidity }: Props
                   <NumberField label={`${label} MR`} unit="psi" value={inputs.mrPsi[key]} min={1}
                     onChange={(v) => update({ mrPsi: { ...inputs.mrPsi, [key]: v } })} onValidity={valid(`mrPsi.${key}`)} />
                 )}
-                <span className="num w-28 pb-3 text-right text-xs text-muted">{derived}</span>
+                <span className="num w-28 pb-3 text-right text-[13px] text-muted">{derived}</span>
               </div>
             );
           })}
@@ -112,7 +112,7 @@ export function DesignInputsPanel({ inputs, result, update, setValidity }: Props
 
       <Section number={4} title="Layer & drainage coefficients">
         <div className="space-y-2">
-          <div className="grid grid-cols-[1fr_6rem_6rem] gap-3 text-[11px] font-medium uppercase tracking-[0.1em] text-subtle">
+          <div className="grid grid-cols-[1fr_6rem_6rem] gap-3 text-[13px] font-medium uppercase tracking-[0.08em] text-subtle">
             <span>Layer</span><span>a</span><span>m</span>
           </div>
           {COEFFICIENTS.filter((c) => active(c.key)).map(({ key, label, n }) => (
@@ -126,7 +126,7 @@ export function DesignInputsPanel({ inputs, result, update, setValidity }: Props
               )}
             </div>
           ))}
-          <p className="text-xs text-subtle">Drainage coefficient m: AASHTO 1993 range 0.4 – 1.4.</p>
+          <p className="text-[13px] text-subtle">Drainage coefficient m: AASHTO 1993 range 0.4 – 1.4.</p>
         </div>
       </Section>
 
@@ -141,8 +141,8 @@ export function DesignInputsPanel({ inputs, result, update, setValidity }: Props
             <option value="25">25 mm</option>
           </select>
         </label>
-        <label className="flex cursor-pointer items-start gap-2.5 text-sm text-ink">
-          <input type="checkbox" className="mt-0.5 h-4 w-4 shrink-0 accent-[var(--ink)]" checked={inputs.enforceAashtoMinimums}
+        <label className="flex min-h-7 cursor-pointer items-start gap-2.5 py-0.5 text-sm text-ink">
+          <input type="checkbox" className="h-5 w-5 shrink-0 accent-[var(--ink)]" checked={inputs.enforceAashtoMinimums}
             onChange={(e) => update({ enforceAashtoMinimums: e.target.checked })} />
           Apply AASHTO 1993 minimum AC and base thickness for the traffic level
         </label>

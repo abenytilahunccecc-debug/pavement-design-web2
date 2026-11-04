@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { mailto, SITE } from '@/lib/site';
-import { HelpCircle, LinkedInIcon, LogoMark, Mail } from './icons';
+import { LinkedInIcon, LogoMark, Mail } from './icons';
 
 /** Footer with contact details. */
 export function SiteFooter() {
@@ -14,25 +14,25 @@ export function SiteFooter() {
           </p>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-subtle">Product</p>
+          <p className="text-[13px] font-semibold uppercase tracking-[0.1em] text-subtle">Product</p>
           <ul className="mt-3 space-y-2 text-sm">
-            <li><Link href="/calculator" className="text-muted transition hover:text-ink">Quick calculator</Link></li>
-            <li><Link href="/register" className="text-muted transition hover:text-ink">Create free account</Link></li>
-            <li><Link href="/login" className="text-muted transition hover:text-ink">Sign in</Link></li>
+            <li><Link href="/calculator" className="inline-block py-1 text-muted transition hover:text-ink">Quick calculator</Link></li>
+            <li><Link href="/register" className="inline-block py-1 text-muted transition hover:text-ink">Create free account</Link></li>
+            <li><Link href="/login" className="inline-block py-1 text-muted transition hover:text-ink">Sign in</Link></li>
           </ul>
         </div>
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-subtle">Contact</p>
+          <p className="text-[13px] font-semibold uppercase tracking-[0.1em] text-subtle">Contact</p>
           <ul className="mt-3 space-y-2 text-sm">
             <li>
-              <a href={mailto()} className="inline-flex items-center gap-2 break-all text-muted transition hover:text-ink">
+              <a href={mailto()} className="inline-flex min-h-7 items-center gap-2 break-all text-muted transition hover:text-ink">
                 <Mail size={15} className="shrink-0" />{SITE.email}
               </a>
             </li>
             {SITE.linkedin && (
               <li>
                 <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-muted transition hover:text-ink">
+                  className="inline-flex min-h-7 items-center gap-2 text-muted transition hover:text-ink">
                   <LinkedInIcon size={15} className="shrink-0" />LinkedIn
                 </a>
               </li>
@@ -41,21 +41,11 @@ export function SiteFooter() {
         </div>
       </div>
       <div className="border-t border-line">
-        <p className="mx-auto max-w-7xl px-4 py-4 text-xs text-subtle sm:px-6">
+        <p className="mx-auto max-w-7xl px-4 py-4 text-[13px] text-subtle sm:px-6">
           © {SITE.copyrightYear} {SITE.author}. Results are for preliminary design; check them against the governing
           specification before use.
         </p>
       </div>
     </footer>
-  );
-}
-
-/** Floating "Help" pill, bottom left (as in the reference design). Opens an email. */
-export function HelpButton() {
-  return (
-    <a href={mailto(`${SITE.name} — help`)}
-      className="print-hidden shadow-float fixed bottom-5 left-5 z-30 hidden h-10 items-center gap-2 rounded-full bg-primary px-4 text-sm font-semibold text-on-primary transition hover:bg-primary-hover md:inline-flex">
-      <HelpCircle size={17} />Help
-    </a>
   );
 }

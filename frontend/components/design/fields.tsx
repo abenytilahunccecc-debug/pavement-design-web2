@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useId, useState } from 'react';
 import { parseNumber, parseThickness } from '@/lib/design-defaults';
 import { inputClass } from '../ui';
 
@@ -22,6 +22,7 @@ interface NumberFieldProps {
 export function NumberField({ label, value, onChange, onValidity, hint, min, max, unit, hideLabel }: NumberFieldProps) {
   const [text, setText] = useState(value === undefined ? '' : String(value));
   const [invalid, setInvalid] = useState(false);
+  const messageId = useId();
 
   // Follow outside changes (e.g. "Reset to defaults") unless the text already shows that number.
   // (Adjusting state while rendering is React's recommended pattern for this.)
@@ -52,17 +53,17 @@ export function NumberField({ label, value, onChange, onValidity, hint, min, max
       <span className="relative block">
         <input
           type="text" inputMode="decimal" value={text} onChange={(e) => handle(e.target.value)}
-          aria-invalid={invalid}
+          aria-invalid={invalid} aria-describedby={invalid || hint ? messageId : undefined}
           className={`${inputClass} num ${unit ? 'pr-16' : ''} ${invalid ? 'border-bad bg-bad-soft' : ''}`}
         />
         {unit && <span className="pointer-events-none absolute inset-y-0 right-3 flex items-center text-xs text-subtle">{unit}</span>}
       </span>
       {invalid && (
-        <span className="mt-1 block text-xs text-bad">
+        <span id={messageId} className="mt-1 block text-[13px] text-bad">
           Enter a number{min !== undefined || max !== undefined ? ` between ${min ?? '…'} and ${max ?? '…'}` : ''}
         </span>
       )}
-      {!invalid && hint && <span className="mt-1 block text-xs text-subtle">{hint}</span>}
+      {!invalid && hint && <span id={messageId} className="mt-1 block text-[13px] text-subtle">{hint}</span>}
     </label>
   );
 }
@@ -79,6 +80,7 @@ interface ThicknessFieldProps {
 export function ThicknessField({ label, value, placeholderMm, onChange, onValidity }: ThicknessFieldProps) {
   const [text, setText] = useState(value == null ? '' : String(value));
   const [invalid, setInvalid] = useState(false);
+  const messageId = useId();
 
   // "use min" / "Reset to defaults" clear the box from outside.
   const [previousValue, setPreviousValue] = useState(value);
@@ -99,11 +101,18 @@ export function ThicknessField({ label, value, placeholderMm, onChange, onValidi
   };
 
   return (
-    <input
-      type="text" inputMode="decimal" aria-label={label} value={text} onChange={(e) => handle(e.target.value)}
-      placeholder={placeholderMm === undefined ? '' : `${placeholderMm.toFixed(1)} (min)`}
-      aria-invalid={invalid}
-      className={`${inputClass} num w-36 py-2 ${invalid ? 'border-bad bg-bad-soft' : ''}`}
-    />
+    <span className="block">
+      <input
+        type="text" inputMode="decimal" aria-label={label} value={text} onChange={(e) => handle(e.target.value)}
+        placeholder={placeholderMm === undefined ? '' : `${placeholderMm.toFixed(1)} (min)`}
+        aria-invalid={invalid} aria-describedby={invalid ? messageId : undefined}
+        className={`${inputClass} num w-32 py-2 ${invalid ? 'border-bad bg-bad-soft' : ''}`}
+      />
+      {invalid && (
+        <span id={messageId} className="mt-1 block max-w-48 text-[13px] text-bad">
+          Enter a thickness from 0 to 3000 mm, e.g. 250, 25cm or 10in. Leave empty for the minimum.
+        </span>
+      )}
+    </span>
   );
 }

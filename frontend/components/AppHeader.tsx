@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { useAuth } from '@/lib/auth';
 import { mailto, SITE } from '@/lib/site';
 import { useIsClient } from '@/lib/use-is-client';
-import { Close, LogoMark, Menu } from './icons';
+import { Close, HelpCircle, LogoMark, Menu } from './icons';
 import { ThemeToggle } from './ThemeToggle';
 
 const NAV = [
@@ -36,7 +36,7 @@ export function AppHeader() {
           <LogoMark size={24} />
           <span className="leading-tight">
             <span className="block text-[17px] font-semibold tracking-[-0.02em]">{SITE.name}</span>
-            <span className="hidden text-[11px] text-muted lg:block">{SITE.tagline}</span>
+            <span className="hidden text-[13px] text-muted lg:block">{SITE.tagline}</span>
           </span>
         </Link>
 
@@ -62,6 +62,10 @@ export function AppHeader() {
               <Link href="/register" className={`${pill} ml-1 bg-primary text-on-primary hover:bg-primary-hover`}>Create free account</Link>
             </>
           )}
+          {/* Help lives in the header (and the phone menu) so it never covers the page content. */}
+          <a href={mailto(`${SITE.name} — help`)} className={`${pill} gap-1.5 px-3 text-muted hover:text-ink`}>
+            <HelpCircle size={16} />Help
+          </a>
           <ThemeToggle className="ml-1" />
         </nav>
 

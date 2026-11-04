@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Suspense } from 'react';
 import { AnnouncementBar } from '@/components/AnnouncementBar';
 import { AppHeader } from '@/components/AppHeader';
-import { HelpButton, SiteFooter } from '@/components/SiteFooter';
+import { SiteFooter } from '@/components/SiteFooter';
 import { AuthProvider } from '@/lib/auth';
 import { THEME_BOOT_SCRIPT } from '@/lib/theme-script';
 import './globals.css';
@@ -39,7 +39,6 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           </Suspense>
           <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 sm:py-10">{children}</main>
           <SiteFooter />
-          <HelpButton />
         </AuthProvider>
       </body>
     </html>

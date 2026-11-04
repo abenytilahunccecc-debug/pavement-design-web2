@@ -52,8 +52,9 @@ export function ButtonLink({ href, children, variant = 'primary', className = ''
   return <Link href={href} className={`${BASE} ${BUTTON_STYLES[variant]} ${className}`}>{children}</Link>;
 }
 
-/** Shows one or more error messages from the API. */
-export function ErrorBox({ messages, title = 'Something went wrong' }: { messages: string[] | string | null; title?: string }) {
+/** Shows one or more error messages from the API, optionally with an action such as "Try again". */
+export function ErrorBox({ messages, title = 'Something went wrong', action }:
+  { messages: string[] | string | null; title?: string; action?: ReactNode }) {
   if (!messages || (Array.isArray(messages) && messages.length === 0)) return null;
   const list = Array.isArray(messages) ? messages : [messages];
   return (
@@ -62,6 +63,7 @@ export function ErrorBox({ messages, title = 'Something went wrong' }: { message
       <div>
         <p className="font-semibold">{title}</p>
         <ul className="mt-1 list-disc pl-5">{list.map((m) => <li key={m}>{m}</li>)}</ul>
+        {action && <div className="mt-3">{action}</div>}
       </div>
     </div>
   );
@@ -92,7 +94,7 @@ export function VerdictBadge({ adequate }: { adequate: boolean }) {
 }
 
 export const inputClass =
-  'w-full rounded-xl border border-line-strong bg-surface px-3.5 py-2.5 text-sm text-ink placeholder:text-subtle transition focus:border-ink focus:outline-none focus:ring-4 focus:ring-[color-mix(in_srgb,var(--ink)_12%,transparent)]';
+  'w-full rounded-xl border border-line-strong bg-surface px-3.5 py-2.5 text-base text-ink placeholder:text-subtle sm:text-sm transition focus:border-ink focus:outline-none focus:ring-4 focus:ring-[color-mix(in_srgb,var(--ink)_12%,transparent)]';
 
 export const selectClass = `${inputClass} appearance-auto`;
 

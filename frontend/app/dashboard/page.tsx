@@ -36,7 +36,7 @@ function DashboardContent() {
           ['Adequate', totals.adequate, 'text-ok'], ['Not adequate', totals.notAdequate, 'text-bad']]
           .map(([label, value, color]) => (
             <Card key={label as string}>
-              <p className="text-xs uppercase tracking-[0.1em] text-muted">{label}</p>
+              <p className="text-[13px] uppercase tracking-[0.08em] text-muted">{label}</p>
               <p className={`mt-1 num text-3xl font-semibold ${color}`}>{value}</p>
             </Card>
           ))}
@@ -53,7 +53,7 @@ function DashboardContent() {
         <div className="mt-6 grid gap-4 lg:grid-cols-2">
           <Card>
             <h2 className="font-semibold text-ink">Designs per project</h2>
-            <div className="mt-2 flex gap-4 text-xs text-muted">
+            <div className="mt-2 flex gap-4 text-[13px] text-muted">
               <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-sm bg-ok-solid" />Adequate</span>
               <span className="flex items-center gap-1"><span className="h-3 w-3 rounded-sm bg-bad-solid" />Not adequate</span>
             </div>
@@ -85,7 +85,7 @@ function DashboardContent() {
                   <li key={d.id} className="flex items-center justify-between gap-3 py-2.5">
                     <div className="min-w-0">
                       <Link href={`/projects/${d.project.id}/designs/${d.id}`} className="block truncate font-medium text-ink hover:underline underline-offset-4">{d.name}</Link>
-                      <span className="text-xs text-muted">{d.project.name} · {d.layerCount} layers · {fixed(d.totalThicknessMm, 0)} mm</span>
+                      <span className="text-[13px] text-muted">{d.project.name} · {d.layerCount} layers · {fixed(d.totalThicknessMm, 0)} mm</span>
                     </div>
                     <VerdictBadge adequate={d.adequate} />
                   </li>

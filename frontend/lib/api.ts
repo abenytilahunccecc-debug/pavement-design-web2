@@ -13,7 +13,15 @@ export class ApiError extends Error {
   constructor(public readonly status: number, public readonly messages: string[]) {
     super(messages.join('\n'));
   }
+
+  /** No answer at all, no answer in time, or the server itself failed: not the user's input. */
+  get isServerProblem() {
+    return this.status === 0 || this.status >= 500;
+  }
 }
+
+/** Render's free plan can take about a minute to wake up; after this we stop waiting and say so. */
+const TIMEOUT_MS = 90_000;
 
 export function getToken(): string | null {
   try { return localStorage.getItem(TOKEN_KEY); } catch { return null; }
@@ -39,23 +47,30 @@ async function request<T>(path: string, options: { method?: string; body?: unkno
   if (options.auth !== false && token) headers.Authorization = `Bearer ${token}`;
 
   let response: Response;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), TIMEOUT_MS);
   try {
     response = await fetch(`${API_URL}${path}`, {
       method: options.method ?? 'GET',
       headers,
       body: options.body === undefined ? undefined : JSON.stringify(options.body),
+      signal: controller.signal,
     });
   } catch {
-    throw new ApiError(0, [
-      `Cannot reach the server (${API_URL}). It may be starting up — on Render's free plan this takes up to a minute. Try again shortly.`,
-    ]);
+    throw new ApiError(0, [controller.signal.aborted
+      ? `The server did not answer within ${TIMEOUT_MS / 1000} seconds. It may be down or still starting up.`
+      : 'The server cannot be reached. Check your internet connection; the server may also be starting up.']);
+  } finally {
+    clearTimeout(timer);
   }
 
   if (response.status === 401 && options.auth !== false) unauthorizedListeners.forEach((listener) => listener());
   const text = await response.text();
-  const data = text ? JSON.parse(text) : null;
+  let data = null;
+  try { data = text ? JSON.parse(text) : null; } catch { /* e.g. an HTML error page from the hosting platform */ }
   if (!response.ok) {
-    const message = data?.message ?? data?.error ?? response.statusText;
+    const message = data?.message ?? data?.error
+      ?? (response.status >= 500 ? `The server had a problem (error ${response.status}).` : response.statusText);
     throw new ApiError(response.status, Array.isArray(message) ? message : [String(message)]);
   }
   return data as T;

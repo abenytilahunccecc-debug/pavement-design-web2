@@ -92,7 +92,7 @@ function ProjectContent() {
         <Card className="overflow-x-auto p-0 sm:p-0">
           <table className="w-full text-sm">
             <thead>
-              <tr className="border-b border-line text-left text-xs uppercase tracking-[0.1em] text-muted">
+              <tr className="border-b border-line text-left text-[13px] uppercase tracking-[0.08em] text-muted">
                 <th className="px-5 py-3">Design</th><th className="px-3">Verdict</th><th className="px-3">Total SN</th>
                 <th className="px-3">Required SN</th><th className="px-3">Thickness</th><th className="px-3">Layers</th>
                 <th className="px-3">Updated</th><th className="px-5" />
@@ -111,7 +111,7 @@ function ProjectContent() {
                   <td className="px-3">{d.layerCount}</td>
                   <td className="px-3 text-muted">{new Date(d.updatedAt).toLocaleDateString()}</td>
                   <td className="px-5 text-right">
-                    <button onClick={() => deleteDesign(d.id, d.name)} className="text-xs text-bad hover:underline">Delete</button>
+                    <button onClick={() => deleteDesign(d.id, d.name)} className="inline-flex min-h-8 min-w-8 items-center justify-center rounded-lg px-2 text-[13px] font-medium text-bad hover:bg-bad-soft">Delete</button>
                   </td>
                 </tr>
               ))}
