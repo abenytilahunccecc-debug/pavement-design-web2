@@ -27,7 +27,7 @@ function summaryRow(d: ExportDesign) {
 
 function layerRows(d: ExportDesign) {
   return (d.result as DesignResult).layers.map((l) => [d.name, l.number, l.name, l.supports, r1(l.thicknessMm),
-    r1(l.minThicknessMm), l.a, l.m, r3(l.snContribution), r3(l.cumulativeSn), r3(l.requiredSn),
+    r1(l.minThicknessMm), l.a, l.key === 'ac' || l.key === 'dbm' ? '' : l.m, r3(l.snContribution), r3(l.cumulativeSn), r3(l.requiredSn),
     l.checkOk ? 'OK' : 'NOT OK']);
 }
 

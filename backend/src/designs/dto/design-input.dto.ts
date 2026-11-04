@@ -31,7 +31,7 @@ export class CoefficientsDto {
   @IsOptional() @IsNumber() @Min(LIMITS.a[0]) @Max(LIMITS.a[1]) capping?: number;
 }
 
-/** Drainage coefficients m2..m5 (AASHTO 1993 Table 2.4 range 0.4–1.4). */
+/** Drainage coefficients m3..m5 (AASHTO 1993 Table 2.4 range 0.4–1.4). AC and DBM are asphalt: m = 1, so m.dbm is ignored. */
 export class DrainageDto {
   @IsOptional() @IsNumber() @Min(LIMITS.m[0]) @Max(LIMITS.m[1]) dbm?: number;
   @IsOptional() @IsNumber() @Min(LIMITS.m[0]) @Max(LIMITS.m[1]) base?: number;

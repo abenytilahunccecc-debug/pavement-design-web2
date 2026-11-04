@@ -72,13 +72,20 @@ describe('engine details', () => {
 
   it('lists every invalid input at once', () => {
     try {
-      designPavement(withDefaults({ reliability: 150, so: 0, m: { dbm: 2 }, thicknessMm: { ac: -5 } }));
+      designPavement(withDefaults({ reliability: 150, so: 0, m: { base: 2 }, thicknessMm: { ac: -5 } }));
       expect.unreachable();
     } catch (error) {
       expect(error).toBeInstanceOf(DesignInputError);
       const problems = (error as DesignInputError).problems.join(' | ');
-      for (const field of ['reliability', 'so', 'm.dbm', 'thicknessMm.ac']) expect(problems).toContain(field);
+      for (const field of ['reliability', 'so', 'm.base', 'thicknessMm.ac']) expect(problems).toContain(field);
     }
+  });
+
+  it('treats the DBM like the AC: asphalt, m = 1 whatever m.dbm says', () => {
+    const plain = designPavement(withDefaults());
+    const withM = designPavement(withDefaults({ m: { dbm: 0.5 } }));
+    expect(withM.layers.find((l) => l.key === 'dbm')?.m).toBe(1);
+    expect(withM.layers).toEqual(plain.layers);
   });
 
   it('designs 3, 4 or 5 layers', () => {

@@ -44,7 +44,7 @@ export interface DesignInput {
   cbr: Partial<Record<UnboundKey, number>>;          // the DBM is asphalt: no CBR
   mrPsi: Partial<Record<SupportKey, number>>;        // mrPsi.dbm is always used for the DBM
   a: Partial<Record<LayerKey, number>>;
-  m: Partial<Record<Exclude<LayerKey, 'ac'>, number>>;
+  m: Partial<Record<Exclude<LayerKey, 'ac'>, number>>; // AC and DBM are asphalt: m is always 1 (m.dbm is ignored)
   thicknessMm: Partial<Record<LayerKey, number | null>>; // missing/null = suggested minimum
   roundUpToMm: number | null;
   enforceAashtoMinimums: boolean;
@@ -57,7 +57,7 @@ export const DEFAULT_INPUT: DesignInput = {
   cbr: { subgrade: 5, capping: 15, subbase: 30, base: 80 },
   mrPsi: { subgrade: 7500, capping: 15000, subbase: 15000, base: 30000, dbm: 400000 },
   a: { ac: 0.44, dbm: 0.34, base: 0.14, subbase: 0.11, capping: 0.08 },
-  m: { dbm: 1, base: 1, subbase: 1, capping: 1 },
+  m: { base: 1, subbase: 1, capping: 1 },
   thicknessMm: {},
   roundUpToMm: null,
   enforceAashtoMinimums: false,
@@ -153,7 +153,7 @@ export function validateInput(inp: DesignInput): void {
       check('a.ac', inp.a.ac, ...LIMITS.aAc, false);
     } else {
       check(`a.${key}`, inp.a[key], ...LIMITS.a);
-      check(`m.${key}`, inp.m[key], ...LIMITS.m);
+      if (key !== 'dbm') check(`m.${key}`, inp.m[key], ...LIMITS.m);
     }
     const t = inp.thicknessMm[key];
     if (t !== undefined && t !== null) check(`thicknessMm.${key}`, t, ...LIMITS.thicknessMm);
@@ -210,7 +210,8 @@ export function designPavement(input: DesignInput): DesignResult {
     const [name, heading, coeffNo] = LAYERS[key];
     const below: SupportKey = number < keys.length ? (keys[number] as SupportKey) : 'subgrade';
     const a = inp.a[key] as number;
-    const m = key === 'ac' ? 1 : (inp.m[key as Exclude<LayerKey, 'ac'>] as number);
+    // AC and DBM are asphalt (bound) layers: no drainage coefficient, m = 1.
+    const m = key === 'ac' || key === 'dbm' ? 1 : (inp.m[key as Exclude<LayerKey, 'ac'>] as number);
     const required = snOn[below] as number;
     const notes: string[] = [];
 

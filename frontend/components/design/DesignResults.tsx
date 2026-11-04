@@ -85,7 +85,7 @@ export function DesignResults({ result, inputs, stale, setThickness, setValidity
                     <p className="font-medium text-ink"><span className="num mr-1.5 text-subtle @min-[46rem]:hidden">{layer.number}</span>{layer.name}</p>
                     <p className="text-[13px] text-subtle">
                       on {layer.supports} · {layer.coefficientSymbol} = {layer.a}
-                      {layer.key === 'ac' ? '' : ` · m${layer.coefficientSymbol.slice(1)} = ${layer.m}`}
+                      {layer.key === 'ac' || layer.key === 'dbm' ? '' : ` · m${layer.coefficientSymbol.slice(1)} = ${layer.m}`}
                     </p>
                   </div>
                   <span className="shrink-0 @min-[46rem]:hidden">{check}</span>

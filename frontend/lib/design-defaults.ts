@@ -7,7 +7,7 @@ export const DEFAULT_INPUT: DesignInput = {
   cbr: { subgrade: 5, capping: 15, subbase: 30, base: 80 },
   mrPsi: { subgrade: 7500, capping: 15000, subbase: 15000, base: 30000, dbm: 400000 },
   a: { ac: 0.44, dbm: 0.34, base: 0.14, subbase: 0.11, capping: 0.08 },
-  m: { dbm: 1, base: 1, subbase: 1, capping: 1 },
+  m: { base: 1, subbase: 1, capping: 1 }, // AC and DBM are asphalt: no m
   thicknessMm: {},
   roundUpToMm: null,
   enforceAashtoMinimums: false,

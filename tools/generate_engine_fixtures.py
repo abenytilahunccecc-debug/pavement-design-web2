@@ -77,7 +77,9 @@ def random_case(rng: random.Random) -> dict:
         a={"ac": round(rng.uniform(0.3, 0.44), 2), "dbm": round(rng.uniform(0.2, 0.4), 2),
            "base": round(rng.uniform(0.1, 0.16), 2), "subbase": round(rng.uniform(0.08, 0.13), 2),
            "capping": round(rng.uniform(0.05, 0.1), 2)},
-        m={k: round(rng.uniform(0.6, 1.3), 2) for k in ("dbm", "base", "subbase", "capping")},
+        # AC and DBM are asphalt: m = 1 (the web app has no m2). Draw dbm anyway so the random sequence is unchanged.
+        m={k: (1.0 if k == "dbm" else v) for k, v in
+           {k: round(rng.uniform(0.6, 1.3), 2) for k in ("dbm", "base", "subbase", "capping")}.items()},
         thickness_mm=({"ac": round(rng.uniform(50, 250))} if rng.random() < 0.3 else {}),
         round_up_to_mm=rng.choice([None, None, 5, 10]),
         enforce_aashto_minimums=rng.random() < 0.3,

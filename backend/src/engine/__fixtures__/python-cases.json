@@ -102,7 +102,7 @@
    ],
    "totalSn": 6.687992125984252,
    "requiredTotalSn": 6.687673613785394,
-   "totalThicknessMm": 859.0999999999999,
+   "totalThicknessMm": 859.1,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -314,7 +314,7 @@
    ],
    "totalSn": 6.687677165354331,
    "requiredTotalSn": 6.687673613785394,
-   "totalThicknessMm": 821.9000000000001,
+   "totalThicknessMm": 821.9,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -448,7 +448,7 @@
    ],
    "totalSn": 6.687834645669291,
    "requiredTotalSn": 6.687673613785394,
-   "totalThicknessMm": 961.1999999999999,
+   "totalThicknessMm": 961.2,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -1142,7 +1142,7 @@
    ],
    "totalSn": 6.290472440944882,
    "requiredTotalSn": 6.29040757574022,
-   "totalThicknessMm": 813.5999999999999,
+   "totalThicknessMm": 813.6,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -1560,7 +1560,7 @@
     "capping": 0.05
    },
    "m": {
-    "dbm": 0.74,
+    "dbm": 1.0,
     "base": 1.19,
     "subbase": 0.78,
     "capping": 0.98
@@ -1716,7 +1716,7 @@
     "capping": 0.1
    },
    "m": {
-    "dbm": 0.61,
+    "dbm": 1.0,
     "base": 0.85,
     "subbase": 1.05,
     "capping": 0.71
@@ -1777,18 +1777,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.28,
-     "m": 0.61,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 4.2221725251423425,
-     "minThicknessMm": 373.8,
-     "suggestedThicknessMm": 375,
-     "thicknessMm": 375,
+     "minThicknessMm": 228.1,
+     "suggestedThicknessMm": 230,
+     "thicknessMm": 230,
      "thicknessIsCustom": false,
-     "snContribution": 2.521653543307087,
-     "cumulativeSn": 4.230314960629922,
+     "snContribution": 2.535433070866142,
+     "cumulativeSn": 4.244094488188977,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 375.0 mm."
+      "Rounded up to the next 5 mm: 230.0 mm."
      ]
     },
     {
@@ -1801,15 +1801,15 @@
      "m": 0.85,
      "supports": "Subbase",
      "requiredSn": 4.284861356747838,
-     "minThicknessMm": 16.3,
-     "suggestedThicknessMm": 20,
-     "thicknessMm": 20,
+     "minThicknessMm": 12.2,
+     "suggestedThicknessMm": 15,
+     "thicknessMm": 15,
      "thicknessIsCustom": false,
-     "snContribution": 0.06692913385826772,
-     "cumulativeSn": 4.29724409448819,
+     "snContribution": 0.05019685039370079,
+     "cumulativeSn": 4.294291338582678,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 20.0 mm."
+      "Rounded up to the next 5 mm: 15.0 mm."
      ]
     },
     {
@@ -1822,12 +1822,12 @@
      "m": 1.05,
      "supports": "Capping Layer",
      "requiredSn": 5.339106307004249,
-     "minThicknessMm": 252.1,
+     "minThicknessMm": 252.8,
      "suggestedThicknessMm": 255,
      "thicknessMm": 255,
      "thicknessIsCustom": false,
      "snContribution": 1.0541338582677167,
-     "cumulativeSn": 5.351377952755906,
+     "cumulativeSn": 5.348425196850394,
      "checkOk": true,
      "notes": [
       "Rounded up to the next 5 mm: 255.0 mm."
@@ -1843,21 +1843,21 @@
      "m": 0.71,
      "supports": "Subgrade",
      "requiredSn": 5.573943111560231,
-     "minThicknessMm": 79.7,
-     "suggestedThicknessMm": 80,
-     "thicknessMm": 80,
+     "minThicknessMm": 80.7,
+     "suggestedThicknessMm": 85,
+     "thicknessMm": 85,
      "thicknessIsCustom": false,
-     "snContribution": 0.2236220472440945,
-     "cumulativeSn": 5.575000000000001,
+     "snContribution": 0.23759842519685043,
+     "cumulativeSn": 5.586023622047245,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 80.0 mm."
+      "Rounded up to the next 5 mm: 85.0 mm."
      ]
     }
    ],
-   "totalSn": 5.575000000000001,
+   "totalSn": 5.586023622047245,
    "requiredTotalSn": 5.573943111560231,
-   "totalThicknessMm": 870,
+   "totalThicknessMm": 725,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -1895,7 +1895,7 @@
     "capping": 0.08
    },
    "m": {
-    "dbm": 0.64,
+    "dbm": 1.0,
     "base": 0.99,
     "subbase": 0.96,
     "capping": 0.84
@@ -1953,18 +1953,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.22,
-     "m": 0.64,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.617682913289544,
-     "minThicknessMm": 411.2,
-     "suggestedThicknessMm": 415,
-     "thicknessMm": 415,
+     "minThicknessMm": 263.2,
+     "suggestedThicknessMm": 265,
+     "thicknessMm": 265,
      "thicknessIsCustom": false,
-     "snContribution": 2.300472440944882,
-     "cumulativeSn": 3.6390551181102366,
+     "snContribution": 2.2952755905511815,
+     "cumulativeSn": 3.633858267716536,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 415.0 mm."
+      "Rounded up to the next 5 mm: 265.0 mm."
      ]
     },
     {
@@ -1977,12 +1977,12 @@
      "m": 0.99,
      "supports": "Subbase",
      "requiredSn": 4.031962664815358,
-     "minThicknessMm": 91.7,
+     "minThicknessMm": 92.9,
      "suggestedThicknessMm": 95,
      "thicknessMm": 95,
      "thicknessIsCustom": false,
      "snContribution": 0.4073031496062992,
-     "cumulativeSn": 4.046358267716536,
+     "cumulativeSn": 4.041161417322836,
      "checkOk": true,
      "notes": [
       "Rounded up to the next 5 mm: 95.0 mm."
@@ -1998,21 +1998,21 @@
      "m": 0.96,
      "supports": "Subgrade",
      "requiredSn": 5.351348101042097,
-     "minThicknessMm": 313.9,
-     "suggestedThicknessMm": 315,
-     "thicknessMm": 315,
+     "minThicknessMm": 315.2,
+     "suggestedThicknessMm": 320,
+     "thicknessMm": 320,
      "thicknessIsCustom": false,
-     "snContribution": 1.3096062992125983,
-     "cumulativeSn": 5.355964566929134,
+     "snContribution": 1.3303937007874016,
+     "cumulativeSn": 5.371555118110237,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 315.0 mm."
+      "Rounded up to the next 5 mm: 320.0 mm."
      ]
     }
    ],
-   "totalSn": 5.355964566929134,
+   "totalSn": 5.371555118110237,
    "requiredTotalSn": 5.351348101042097,
-   "totalThicknessMm": 910,
+   "totalThicknessMm": 765,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -2050,7 +2050,7 @@
     "capping": 0.06
    },
    "m": {
-    "dbm": 1.19,
+    "dbm": 1.0,
     "base": 1.0,
     "subbase": 0.84,
     "capping": 1.23
@@ -2110,18 +2110,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.39,
-     "m": 1.19,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.812834742618021,
-     "minThicknessMm": 17.1,
-     "suggestedThicknessMm": 20,
-     "thicknessMm": 20,
+     "minThicknessMm": 20.4,
+     "suggestedThicknessMm": 30,
+     "thicknessMm": 30,
      "thicknessIsCustom": false,
-     "snContribution": 0.36543307086614174,
-     "cumulativeSn": 3.866220472440945,
+     "snContribution": 0.4606299212598426,
+     "cumulativeSn": 3.9614173228346456,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 20.0 mm."
+      "Rounded up to the next 10 mm: 30.0 mm."
      ]
     },
     {
@@ -2134,15 +2134,15 @@
      "m": 1.0,
      "supports": "Subbase",
      "requiredSn": 4.826795851839316,
-     "minThicknessMm": 244.0,
-     "suggestedThicknessMm": 250,
-     "thicknessMm": 250,
+     "minThicknessMm": 219.9,
+     "suggestedThicknessMm": 220,
+     "thicknessMm": 220,
      "thicknessIsCustom": false,
-     "snContribution": 0.984251968503937,
-     "cumulativeSn": 4.850472440944882,
+     "snContribution": 0.8661417322834647,
+     "cumulativeSn": 4.82755905511811,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 250.0 mm."
+      "Rounded up to the next 10 mm: 220.0 mm."
      ]
     },
     {
@@ -2155,21 +2155,21 @@
      "m": 0.84,
      "supports": "Subgrade",
      "requiredSn": 5.417036121170371,
-     "minThicknessMm": 155.8,
-     "suggestedThicknessMm": 160,
-     "thicknessMm": 160,
+     "minThicknessMm": 162.1,
+     "suggestedThicknessMm": 170,
+     "thicknessMm": 170,
      "thicknessIsCustom": false,
-     "snContribution": 0.5820472440944882,
-     "cumulativeSn": 5.43251968503937,
+     "snContribution": 0.6184251968503937,
+     "cumulativeSn": 5.445984251968504,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 160.0 mm."
+      "Rounded up to the next 10 mm: 170.0 mm."
      ]
     }
    ],
-   "totalSn": 5.43251968503937,
+   "totalSn": 5.445984251968504,
    "requiredTotalSn": 5.417036121170371,
-   "totalThicknessMm": 677,
+   "totalThicknessMm": 667,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -2207,7 +2207,7 @@
     "capping": 0.08
    },
    "m": {
-    "dbm": 0.93,
+    "dbm": 1.0,
     "base": 0.89,
     "subbase": 0.95,
     "capping": 1.28
@@ -2263,15 +2263,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.26,
-     "m": 0.93,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 4.669982672735662,
-     "minThicknessMm": 279.4,
-     "suggestedThicknessMm": 279.4,
-     "thicknessMm": 279.4,
+     "minThicknessMm": 259.9,
+     "suggestedThicknessMm": 259.9,
+     "thicknessMm": 259.9,
      "thicknessIsCustom": false,
-     "snContribution": 2.6598000000000006,
-     "cumulativeSn": 4.670233070866143,
+     "snContribution": 2.660393700787402,
+     "cumulativeSn": 4.670826771653544,
      "checkOk": true,
      "notes": []
     },
@@ -2285,12 +2285,12 @@
      "m": 0.89,
      "supports": "Subbase",
      "requiredSn": 5.214835526072781,
-     "minThicknessMm": 111.1,
-     "suggestedThicknessMm": 111.1,
-     "thicknessMm": 111.1,
+     "minThicknessMm": 110.9,
+     "suggestedThicknessMm": 110.9,
+     "thicknessMm": 110.9,
      "thicknessIsCustom": false,
-     "snContribution": 0.5450023622047244,
-     "cumulativeSn": 5.215235433070867,
+     "snContribution": 0.5440212598425198,
+     "cumulativeSn": 5.2148480314960635,
      "checkOk": true,
      "notes": []
     },
@@ -2304,19 +2304,19 @@
      "m": 0.95,
      "supports": "Subgrade",
      "requiredSn": 6.813393080959029,
-     "minThicknessMm": 356.1,
-     "suggestedThicknessMm": 356.1,
-     "thicknessMm": 356.1,
+     "minThicknessMm": 356.2,
+     "suggestedThicknessMm": 356.2,
+     "thicknessMm": 356.2,
      "thicknessIsCustom": false,
-     "snContribution": 1.598244094488189,
-     "cumulativeSn": 6.813479527559056,
+     "snContribution": 1.5986929133858268,
+     "cumulativeSn": 6.81354094488189,
      "checkOk": true,
      "notes": []
     }
    ],
-   "totalSn": 6.813479527559056,
+   "totalSn": 6.81354094488189,
    "requiredTotalSn": 6.813393080959029,
-   "totalThicknessMm": 892.5,
+   "totalThicknessMm": 872.9,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -2354,7 +2354,7 @@
     "capping": 0.08
    },
    "m": {
-    "dbm": 0.87,
+    "dbm": 1.0,
     "base": 0.78,
     "subbase": 1.04,
     "capping": 1.27
@@ -2412,7 +2412,7 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.3,
-     "m": 0.87,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 1.7967250682514813,
      "minThicknessMm": 0.0,
@@ -2505,7 +2505,7 @@
     "capping": 0.07
    },
    "m": {
-    "dbm": 1.07,
+    "dbm": 1.0,
     "base": 0.96,
     "subbase": 1.14,
     "capping": 0.93
@@ -2564,18 +2564,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.37,
-     "m": 1.07,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.5595169372209856,
-     "minThicknessMm": 134.0,
-     "suggestedThicknessMm": 140,
-     "thicknessMm": 140,
+     "minThicknessMm": 143.3,
+     "suggestedThicknessMm": 150,
+     "thicknessMm": 150,
      "thicknessIsCustom": false,
-     "snContribution": 2.1821259842519685,
-     "cumulativeSn": 3.6545669291338587,
+     "snContribution": 2.1850393700787403,
+     "cumulativeSn": 3.6574803149606305,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 140.0 mm."
+      "Rounded up to the next 10 mm: 150.0 mm."
      ]
     },
     {
@@ -2588,12 +2588,12 @@
      "m": 0.96,
      "supports": "Subbase",
      "requiredSn": 3.827418972503027,
-     "minThicknessMm": 41.6,
+     "minThicknessMm": 40.9,
      "suggestedThicknessMm": 160,
      "thicknessMm": 160,
      "thicknessIsCustom": false,
      "snContribution": 0.6651968503937008,
-     "cumulativeSn": 4.31976377952756,
+     "cumulativeSn": 4.322677165354332,
      "checkOk": true,
      "notes": [
       "AASHTO 1993 minimum thickness applies: 152.4 mm.",
@@ -2610,21 +2610,21 @@
      "m": 1.14,
      "supports": "Subgrade",
      "requiredSn": 5.713861845331758,
-     "minThicknessMm": 258.9,
+     "minThicknessMm": 258.4,
      "suggestedThicknessMm": 260,
      "thicknessMm": 260,
      "thicknessIsCustom": false,
      "snContribution": 1.4003149606299212,
-     "cumulativeSn": 5.720078740157481,
+     "cumulativeSn": 5.722992125984253,
      "checkOk": true,
      "notes": [
       "Rounded up to the next 10 mm: 260.0 mm."
      ]
     }
    ],
-   "totalSn": 5.720078740157481,
+   "totalSn": 5.722992125984253,
    "requiredTotalSn": 5.713861845331758,
-   "totalThicknessMm": 670,
+   "totalThicknessMm": 680,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -2662,7 +2662,7 @@
     "capping": 0.1
    },
    "m": {
-    "dbm": 0.86,
+    "dbm": 1.0,
     "base": 1.21,
     "subbase": 1.18,
     "capping": 0.75
@@ -2816,7 +2816,7 @@
     "capping": 0.09
    },
    "m": {
-    "dbm": 1.18,
+    "dbm": 1.0,
     "base": 0.77,
     "subbase": 0.96,
     "capping": 0.77
@@ -2874,18 +2874,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.34,
-     "m": 1.18,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.569516734511735,
-     "minThicknessMm": 130.1,
-     "suggestedThicknessMm": 140,
-     "thicknessMm": 140,
+     "minThicknessMm": 153.5,
+     "suggestedThicknessMm": 160,
+     "thicknessMm": 160,
      "thicknessIsCustom": false,
-     "snContribution": 2.2113385826771657,
-     "cumulativeSn": 3.7270866141732286,
+     "snContribution": 2.141732283464567,
+     "cumulativeSn": 3.65748031496063,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 140.0 mm."
+      "Rounded up to the next 10 mm: 160.0 mm."
      ]
     },
     {
@@ -2898,15 +2898,15 @@
      "m": 0.77,
      "supports": "Subbase",
      "requiredSn": 3.785765242921846,
-     "minThicknessMm": 17.6,
-     "suggestedThicknessMm": 20,
-     "thicknessMm": 20,
+     "minThicknessMm": 38.5,
+     "suggestedThicknessMm": 40,
+     "thicknessMm": 40,
      "thicknessIsCustom": false,
-     "snContribution": 0.06669291338582677,
-     "cumulativeSn": 3.7937795275590553,
+     "snContribution": 0.13338582677165353,
+     "cumulativeSn": 3.7908661417322835,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 20.0 mm."
+      "Rounded up to the next 10 mm: 40.0 mm."
      ]
     },
     {
@@ -2919,21 +2919,21 @@
      "m": 0.96,
      "supports": "Subgrade",
      "requiredSn": 4.721251543343685,
-     "minThicknessMm": 223.1,
+     "minThicknessMm": 223.8,
      "suggestedThicknessMm": 230,
      "thicknessMm": 230,
      "thicknessIsCustom": false,
      "snContribution": 0.9562204724409449,
-     "cumulativeSn": 4.75,
+     "cumulativeSn": 4.747086614173228,
      "checkOk": true,
      "notes": [
       "Rounded up to the next 10 mm: 230.0 mm."
      ]
     }
    ],
-   "totalSn": 4.75,
+   "totalSn": 4.747086614173228,
    "requiredTotalSn": 4.721251543343685,
-   "totalThicknessMm": 500,
+   "totalThicknessMm": 540,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -2971,7 +2971,7 @@
     "capping": 0.06
    },
    "m": {
-    "dbm": 1.1,
+    "dbm": 1.0,
     "base": 1.25,
     "subbase": 0.85,
     "capping": 1.12
@@ -3032,18 +3032,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.36,
-     "m": 1.1,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 4.9981762217443215,
-     "minThicknessMm": 214.0,
-     "suggestedThicknessMm": 215,
-     "thicknessMm": 215,
+     "minThicknessMm": 235.4,
+     "suggestedThicknessMm": 240,
+     "thicknessMm": 240,
      "thicknessIsCustom": false,
-     "snContribution": 3.3519685039370084,
-     "cumulativeSn": 5.01496062992126,
+     "snContribution": 3.4015748031496065,
+     "cumulativeSn": 5.064566929133859,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 215.0 mm."
+      "Rounded up to the next 5 mm: 240.0 mm."
      ]
     },
     {
@@ -3056,15 +3056,15 @@
      "m": 1.25,
      "supports": "Subbase",
      "requiredSn": 5.561933927732143,
-     "minThicknessMm": 111.2,
-     "suggestedThicknessMm": 115,
-     "thicknessMm": 115,
+     "minThicknessMm": 101.1,
+     "suggestedThicknessMm": 105,
+     "thicknessMm": 105,
      "thicknessIsCustom": false,
-     "snContribution": 0.5659448818897638,
-     "cumulativeSn": 5.580905511811024,
+     "snContribution": 0.516732283464567,
+     "cumulativeSn": 5.5812992125984255,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 115.0 mm."
+      "Rounded up to the next 5 mm: 105.0 mm."
      ]
     },
     {
@@ -3077,21 +3077,21 @@
      "m": 0.85,
      "supports": "Subgrade",
      "requiredSn": 7.294794088918133,
-     "minThicknessMm": 640.2,
+     "minThicknessMm": 640.1,
      "suggestedThicknessMm": 645,
      "thicknessMm": 645,
      "thicknessIsCustom": false,
      "snContribution": 1.7267716535433073,
-     "cumulativeSn": 7.307677165354331,
+     "cumulativeSn": 7.308070866141733,
      "checkOk": true,
      "notes": [
       "Rounded up to the next 5 mm: 645.0 mm."
      ]
     }
    ],
-   "totalSn": 7.307677165354331,
+   "totalSn": 7.308070866141733,
    "requiredTotalSn": 7.294794088918133,
-   "totalThicknessMm": 1103,
+   "totalThicknessMm": 1118,
    "totalOk": true,
    "failedLayers": [
     "AC Course"
@@ -3131,7 +3131,7 @@
     "capping": 0.05
    },
    "m": {
-    "dbm": 1.21,
+    "dbm": 1.0,
     "base": 0.7,
     "subbase": 1.22,
     "capping": 1.06
@@ -3283,7 +3283,7 @@
     "capping": 0.07
    },
    "m": {
-    "dbm": 1.3,
+    "dbm": 1.0,
     "base": 0.76,
     "subbase": 0.7,
     "capping": 1.01
@@ -3342,12 +3342,12 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.31,
-     "m": 1.3,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 4.209397963160244,
-     "minThicknessMm": 164.0,
-     "suggestedThicknessMm": 164.0,
-     "thicknessMm": 164.0,
+     "minThicknessMm": 213.2,
+     "suggestedThicknessMm": 213.2,
+     "thicknessMm": 213.2,
      "thicknessIsCustom": false,
      "snContribution": 2.602047244094488,
      "cumulativeSn": 4.209527559055118,
@@ -3416,7 +3416,7 @@
    ],
    "totalSn": 5.716425196850394,
    "requiredTotalSn": 5.71621641319191,
-   "totalThicknessMm": 747.0,
+   "totalThicknessMm": 796.1999999999999,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -3454,7 +3454,7 @@
     "capping": 0.05
    },
    "m": {
-    "dbm": 0.96,
+    "dbm": 1.0,
     "base": 0.95,
     "subbase": 0.75,
     "capping": 0.88
@@ -3610,7 +3610,7 @@
     "capping": 0.06
    },
    "m": {
-    "dbm": 0.8,
+    "dbm": 1.0,
     "base": 1.27,
     "subbase": 0.6,
     "capping": 0.96
@@ -3669,15 +3669,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.3,
-     "m": 0.8,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.236462485627767,
-     "minThicknessMm": 193.6,
-     "suggestedThicknessMm": 193.6,
-     "thicknessMm": 193.6,
+     "minThicknessMm": 154.9,
+     "suggestedThicknessMm": 154.9,
+     "thicknessMm": 154.9,
      "thicknessIsCustom": false,
-     "snContribution": 1.8292913385826772,
-     "cumulativeSn": 3.2370866141732284,
+     "snContribution": 1.8295275590551183,
+     "cumulativeSn": 3.2373228346456697,
      "checkOk": true,
      "notes": []
     },
@@ -3691,12 +3691,12 @@
      "m": 1.27,
      "supports": "Subbase",
      "requiredSn": 4.701282843189913,
-     "minThicknessMm": 183.1,
-     "suggestedThicknessMm": 183.1,
-     "thicknessMm": 183.1,
+     "minThicknessMm": 183.0,
+     "suggestedThicknessMm": 183.0,
+     "thicknessMm": 183.0,
      "thicknessIsCustom": false,
-     "snContribution": 1.4648,
-     "cumulativeSn": 4.701886614173229,
+     "snContribution": 1.464,
+     "cumulativeSn": 4.701322834645669,
      "checkOk": true,
      "notes": []
     },
@@ -3715,7 +3715,7 @@
      "thicknessMm": 0.0,
      "thicknessIsCustom": false,
      "snContribution": 0.0,
-     "cumulativeSn": 4.701886614173229,
+     "cumulativeSn": 4.701322834645669,
      "checkOk": true,
      "notes": [
       "The layers above already provide this SN, so any thickness passes this check."
@@ -3731,19 +3731,19 @@
      "m": 0.96,
      "supports": "Subgrade",
      "requiredSn": 4.719516502428656,
-     "minThicknessMm": 7.8,
-     "suggestedThicknessMm": 7.8,
-     "thicknessMm": 7.8,
+     "minThicknessMm": 8.1,
+     "suggestedThicknessMm": 8.1,
+     "thicknessMm": 8.1,
      "thicknessIsCustom": false,
-     "snContribution": 0.01768818897637795,
-     "cumulativeSn": 4.719574803149607,
+     "snContribution": 0.018368503937007872,
+     "cumulativeSn": 4.7196913385826775,
      "checkOk": true,
      "notes": []
     }
    ],
-   "totalSn": 4.719574803149607,
+   "totalSn": 4.7196913385826775,
    "requiredTotalSn": 4.719516502428656,
-   "totalThicknessMm": 478.59999999999997,
+   "totalThicknessMm": 440.1,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -3781,7 +3781,7 @@
     "capping": 0.06
    },
    "m": {
-    "dbm": 1.09,
+    "dbm": 1.0,
     "base": 1.27,
     "subbase": 1.25,
     "capping": 0.76
@@ -3840,18 +3840,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.33,
-     "m": 1.09,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.4698382834639663,
-     "minThicknessMm": 122.5,
-     "suggestedThicknessMm": 125,
-     "thicknessMm": 125,
+     "minThicknessMm": 133.5,
+     "suggestedThicknessMm": 135,
+     "thicknessMm": 135,
      "thicknessIsCustom": false,
-     "snContribution": 1.770177165354331,
-     "cumulativeSn": 3.506397637795276,
+     "snContribution": 1.753937007874016,
+     "cumulativeSn": 3.490157480314961,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 125.0 mm."
+      "Rounded up to the next 5 mm: 135.0 mm."
      ]
     },
     {
@@ -3864,12 +3864,12 @@
      "m": 1.27,
      "supports": "Subbase",
      "requiredSn": 4.0737062461858375,
-     "minThicknessMm": 71.0,
+     "minThicknessMm": 73.0,
      "suggestedThicknessMm": 155,
      "thicknessMm": 155,
      "thicknessIsCustom": false,
      "snContribution": 1.2400000000000002,
-     "cumulativeSn": 4.746397637795276,
+     "cumulativeSn": 4.730157480314961,
      "checkOk": true,
      "notes": [
       "AASHTO 1993 minimum thickness applies: 152.4 mm.",
@@ -3891,16 +3891,16 @@
      "thicknessMm": 0,
      "thicknessIsCustom": false,
      "snContribution": 0.0,
-     "cumulativeSn": 4.746397637795276,
+     "cumulativeSn": 4.730157480314961,
      "checkOk": true,
      "notes": [
       "The layers above already provide this SN, so any thickness passes this check."
      ]
     }
    ],
-   "totalSn": 4.746397637795276,
+   "totalSn": 4.730157480314961,
    "requiredTotalSn": 4.49258894316098,
-   "totalThicknessMm": 385,
+   "totalThicknessMm": 395,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -4086,7 +4086,7 @@
     "capping": 0.06
    },
    "m": {
-    "dbm": 1.03,
+    "dbm": 1.0,
     "base": 1.04,
     "subbase": 1.23,
     "capping": 0.94
@@ -4142,15 +4142,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.27,
-     "m": 1.03,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 5.012767198312185,
-     "minThicknessMm": 256.4,
-     "suggestedThicknessMm": 256.4,
-     "thicknessMm": 256.4,
+     "minThicknessMm": 264.1,
+     "suggestedThicknessMm": 264.1,
+     "thicknessMm": 264.1,
      "thicknessIsCustom": false,
-     "snContribution": 2.8072771653543307,
-     "cumulativeSn": 5.013576377952756,
+     "snContribution": 2.8073622047244102,
+     "cumulativeSn": 5.013661417322835,
      "checkOk": true,
      "notes": []
     },
@@ -4164,12 +4164,12 @@
      "m": 1.04,
      "supports": "Subbase",
      "requiredSn": 6.124870631484791,
-     "minThicknessMm": 271.5,
-     "suggestedThicknessMm": 271.5,
-     "thicknessMm": 271.5,
+     "minThicknessMm": 271.4,
+     "suggestedThicknessMm": 271.4,
+     "thicknessMm": 271.4,
      "thicknessIsCustom": false,
-     "snContribution": 1.1116535433070867,
-     "cumulativeSn": 6.125229921259843,
+     "snContribution": 1.1112440944881892,
+     "cumulativeSn": 6.124905511811024,
      "checkOk": true,
      "notes": []
     },
@@ -4188,14 +4188,14 @@
      "thicknessMm": 26.0,
      "thicknessIsCustom": false,
      "snContribution": 0.15108661417322833,
-     "cumulativeSn": 6.276316535433071,
+     "cumulativeSn": 6.275992125984252,
      "checkOk": true,
      "notes": []
     }
    ],
-   "totalSn": 6.276316535433071,
+   "totalSn": 6.275992125984252,
    "requiredTotalSn": 6.275848770836001,
-   "totalThicknessMm": 694.0,
+   "totalThicknessMm": 701.6,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -4233,7 +4233,7 @@
     "capping": 0.07
    },
    "m": {
-    "dbm": 1.29,
+    "dbm": 1.0,
     "base": 1.12,
     "subbase": 1.03,
     "capping": 1.27
@@ -4289,15 +4289,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.39,
-     "m": 1.29,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.500097164642435,
-     "minThicknessMm": 93.0,
-     "suggestedThicknessMm": 93.0,
-     "thicknessMm": 93.0,
+     "minThicknessMm": 120.0,
+     "suggestedThicknessMm": 120.0,
+     "thicknessMm": 120.0,
      "thicknessIsCustom": false,
-     "snContribution": 1.8420590551181104,
-     "cumulativeSn": 3.500681102362205,
+     "snContribution": 1.8425196850393704,
+     "cumulativeSn": 3.5011417322834646,
      "checkOk": true,
      "notes": []
     },
@@ -4311,12 +4311,12 @@
      "m": 1.12,
      "supports": "Subbase",
      "requiredSn": 4.200746356918872,
-     "minThicknessMm": 105.9,
-     "suggestedThicknessMm": 105.9,
-     "thicknessMm": 105.9,
+     "minThicknessMm": 105.8,
+     "suggestedThicknessMm": 105.8,
+     "thicknessMm": 105.8,
      "thicknessIsCustom": false,
-     "snContribution": 0.7004409448818899,
-     "cumulativeSn": 4.201122047244095,
+     "snContribution": 0.699779527559055,
+     "cumulativeSn": 4.20092125984252,
      "checkOk": true,
      "notes": []
     },
@@ -4335,14 +4335,14 @@
      "thicknessMm": 646.4,
      "thicknessIsCustom": false,
      "snContribution": 2.621228346456693,
-     "cumulativeSn": 6.822350393700788,
+     "cumulativeSn": 6.822149606299213,
      "checkOk": true,
      "notes": []
     }
    ],
-   "totalSn": 6.822350393700788,
+   "totalSn": 6.822149606299213,
    "requiredTotalSn": 6.8221107644478085,
-   "totalThicknessMm": 981.2,
+   "totalThicknessMm": 1008.1,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -4380,7 +4380,7 @@
     "capping": 0.09
    },
    "m": {
-    "dbm": 0.91,
+    "dbm": 1.0,
     "base": 1.17,
     "subbase": 0.7,
     "capping": 1.12
@@ -4436,15 +4436,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.2,
-     "m": 0.91,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.1989960655950167,
-     "minThicknessMm": 212.5,
-     "suggestedThicknessMm": 212.5,
-     "thicknessMm": 212.5,
+     "minThicknessMm": 193.4,
+     "suggestedThicknessMm": 193.4,
+     "thicknessMm": 193.4,
      "thicknessIsCustom": false,
-     "snContribution": 1.5226377952755907,
-     "cumulativeSn": 3.1995669291338587,
+     "snContribution": 1.5228346456692916,
+     "cumulativeSn": 3.1997637795275593,
      "checkOk": true,
      "notes": []
     },
@@ -4463,7 +4463,7 @@
      "thicknessMm": 152.39999999999998,
      "thicknessIsCustom": false,
      "snContribution": 1.0529999999999997,
-     "cumulativeSn": 4.252566929133859,
+     "cumulativeSn": 4.252763779527559,
      "checkOk": true,
      "notes": [
       "AASHTO 1993 minimum thickness applies: 152.4 mm."
@@ -4479,19 +4479,19 @@
      "m": 0.7,
      "supports": "Subgrade",
      "requiredSn": 4.358986160256029,
-     "minThicknessMm": 48.3,
-     "suggestedThicknessMm": 48.3,
-     "thicknessMm": 48.3,
+     "minThicknessMm": 48.2,
+     "suggestedThicknessMm": 48.2,
+     "thicknessMm": 48.2,
      "thicknessIsCustom": false,
-     "snContribution": 0.10648818897637793,
-     "cumulativeSn": 4.359055118110237,
+     "snContribution": 0.10626771653543308,
+     "cumulativeSn": 4.3590314960629915,
      "checkOk": true,
      "notes": []
     }
    ],
-   "totalSn": 4.359055118110237,
+   "totalSn": 4.3590314960629915,
    "requiredTotalSn": 4.358986160256029,
-   "totalThicknessMm": 550.5999999999999,
+   "totalThicknessMm": 531.4,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -4529,7 +4529,7 @@
     "capping": 0.09
    },
    "m": {
-    "dbm": 0.99,
+    "dbm": 1.0,
     "base": 1.05,
     "subbase": 0.78,
     "capping": 1.24
@@ -4590,15 +4590,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.34,
-     "m": 0.99,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 2.8237909879675893,
      "minThicknessMm": 2.0,
      "suggestedThicknessMm": 2.0,
      "thicknessMm": 2.0,
      "thicknessIsCustom": false,
-     "snContribution": 0.02650393700787402,
-     "cumulativeSn": 2.8241417322834645,
+     "snContribution": 0.02677165354330709,
+     "cumulativeSn": 2.8244094488188978,
      "checkOk": true,
      "notes": []
     },
@@ -4612,12 +4612,12 @@
      "m": 1.05,
      "supports": "Subbase",
      "requiredSn": 2.954878777413983,
-     "minThicknessMm": 28.8,
-     "suggestedThicknessMm": 28.8,
-     "thicknessMm": 28.8,
+     "minThicknessMm": 28.7,
+     "suggestedThicknessMm": 28.7,
+     "thicknessMm": 28.7,
      "thicknessIsCustom": false,
-     "snContribution": 0.13096062992125984,
-     "cumulativeSn": 2.9551023622047246,
+     "snContribution": 0.13050590551181104,
+     "cumulativeSn": 2.954915354330709,
      "checkOk": true,
      "notes": []
     },
@@ -4636,7 +4636,7 @@
      "thicknessMm": 426.6,
      "thicknessIsCustom": false,
      "snContribution": 1.0480251968503937,
-     "cumulativeSn": 4.003127559055118,
+     "cumulativeSn": 4.002940551181103,
      "checkOk": true,
      "notes": []
     },
@@ -4655,16 +4655,16 @@
      "thicknessMm": 0.0,
      "thicknessIsCustom": false,
      "snContribution": 0.0,
-     "cumulativeSn": 4.003127559055118,
+     "cumulativeSn": 4.002940551181103,
      "checkOk": true,
      "notes": [
       "The layers above already provide this SN, so any thickness passes this check."
      ]
     }
    ],
-   "totalSn": 4.003127559055118,
+   "totalSn": 4.002940551181103,
    "requiredTotalSn": 3.674514664172124,
-   "totalThicknessMm": 666.4000000000001,
+   "totalThicknessMm": 666.3000000000001,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -4702,7 +4702,7 @@
     "capping": 0.1
    },
    "m": {
-    "dbm": 1.15,
+    "dbm": 1.0,
     "base": 1.12,
     "subbase": 0.63,
     "capping": 0.61
@@ -4861,7 +4861,7 @@
     "capping": 0.09
    },
    "m": {
-    "dbm": 1.14,
+    "dbm": 1.0,
     "base": 1.25,
     "subbase": 1.23,
     "capping": 1.02
@@ -4921,18 +4921,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.23,
-     "m": 1.14,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.8160430518585198,
-     "minThicknessMm": 218.7,
-     "suggestedThicknessMm": 220,
-     "thicknessMm": 220,
+     "minThicknessMm": 249.3,
+     "suggestedThicknessMm": 250,
+     "thicknessMm": 250,
      "thicknessIsCustom": false,
-     "snContribution": 2.271023622047244,
-     "cumulativeSn": 3.8296850393700788,
+     "snContribution": 2.263779527559055,
+     "cumulativeSn": 3.82244094488189,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 220.0 mm."
+      "Rounded up to the next 5 mm: 250.0 mm."
      ]
     },
     {
@@ -4945,12 +4945,12 @@
      "m": 1.25,
      "supports": "Subbase",
      "requiredSn": 4.185867588985959,
-     "minThicknessMm": 65.8,
+     "minThicknessMm": 67.2,
      "suggestedThicknessMm": 70,
      "thicknessMm": 70,
      "thicknessIsCustom": false,
      "snContribution": 0.37893700787401574,
-     "cumulativeSn": 4.208622047244095,
+     "cumulativeSn": 4.201377952755905,
      "checkOk": true,
      "notes": [
       "Rounded up to the next 5 mm: 70.0 mm."
@@ -4966,21 +4966,21 @@
      "m": 1.23,
      "supports": "Subgrade",
      "requiredSn": 5.357906810442481,
-     "minThicknessMm": 263.8,
-     "suggestedThicknessMm": 265,
-     "thicknessMm": 265,
+     "minThicknessMm": 265.4,
+     "suggestedThicknessMm": 270,
+     "thicknessMm": 270,
      "thicknessIsCustom": false,
-     "snContribution": 1.15494094488189,
-     "cumulativeSn": 5.363562992125985,
+     "snContribution": 1.176732283464567,
+     "cumulativeSn": 5.378110236220472,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 265.0 mm."
+      "Rounded up to the next 5 mm: 270.0 mm."
      ]
     }
    ],
-   "totalSn": 5.363562992125985,
+   "totalSn": 5.378110236220472,
    "requiredTotalSn": 5.357906810442481,
-   "totalThicknessMm": 662,
+   "totalThicknessMm": 697,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -5018,7 +5018,7 @@
     "capping": 0.06
    },
    "m": {
-    "dbm": 0.7,
+    "dbm": 1.0,
     "base": 0.78,
     "subbase": 0.87,
     "capping": 0.72
@@ -5077,15 +5077,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.4,
-     "m": 0.7,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 4.606313127356421,
-     "minThicknessMm": 239.2,
-     "suggestedThicknessMm": 239.2,
-     "thicknessMm": 239.2,
+     "minThicknessMm": 167.5,
+     "suggestedThicknessMm": 167.5,
+     "thicknessMm": 167.5,
      "thicknessIsCustom": false,
-     "snContribution": 2.6368503937007874,
-     "cumulativeSn": 4.606929133858268,
+     "snContribution": 2.637795275590552,
+     "cumulativeSn": 4.607874015748032,
      "checkOk": true,
      "notes": []
     },
@@ -5099,12 +5099,12 @@
      "m": 0.78,
      "supports": "Subbase",
      "requiredSn": 5.177973239389688,
-     "minThicknessMm": 143.1,
+     "minThicknessMm": 142.9,
      "suggestedThicknessMm": 152.39999999999998,
      "thicknessMm": 152.39999999999998,
      "thicknessIsCustom": false,
      "snContribution": 0.6083999999999999,
-     "cumulativeSn": 5.215329133858267,
+     "cumulativeSn": 5.216274015748032,
      "checkOk": true,
      "notes": [
       "AASHTO 1993 minimum thickness applies: 152.4 mm."
@@ -5125,7 +5125,7 @@
      "thicknessMm": 0.0,
      "thicknessIsCustom": false,
      "snContribution": 0.0,
-     "cumulativeSn": 5.215329133858267,
+     "cumulativeSn": 5.216274015748032,
      "checkOk": true,
      "notes": [
       "The layers above already provide this SN, so any thickness passes this check."
@@ -5141,19 +5141,19 @@
      "m": 0.72,
      "supports": "Subgrade",
      "requiredSn": 5.526591757369959,
-     "minThicknessMm": 183.1,
-     "suggestedThicknessMm": 183.1,
-     "thicknessMm": 183.1,
+     "minThicknessMm": 182.5,
+     "suggestedThicknessMm": 182.5,
+     "thicknessMm": 182.5,
      "thicknessIsCustom": false,
-     "snContribution": 0.31141417322834647,
-     "cumulativeSn": 5.526743307086614,
+     "snContribution": 0.3103937007874016,
+     "cumulativeSn": 5.526667716535433,
      "checkOk": true,
      "notes": []
     }
    ],
-   "totalSn": 5.526743307086614,
+   "totalSn": 5.526667716535433,
    "requiredTotalSn": 5.526591757369959,
-   "totalThicknessMm": 699.8,
+   "totalThicknessMm": 627.5,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -5191,7 +5191,7 @@
     "capping": 0.1
    },
    "m": {
-    "dbm": 0.91,
+    "dbm": 1.0,
     "base": 1.26,
     "subbase": 1.06,
     "capping": 1.14
@@ -5249,19 +5249,17 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.39,
-     "m": 0.91,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 4.298876875210356,
-     "minThicknessMm": 153.9,
-     "suggestedThicknessMm": 160,
-     "thicknessMm": 160,
+     "minThicknessMm": 140.0,
+     "suggestedThicknessMm": 140,
+     "thicknessMm": 140,
      "thicknessIsCustom": false,
-     "snContribution": 2.2355905511811027,
-     "cumulativeSn": 4.385196850393701,
+     "snContribution": 2.1496062992125986,
+     "cumulativeSn": 4.299212598425197,
      "checkOk": true,
-     "notes": [
-      "Rounded up to the next 10 mm: 160.0 mm."
-     ]
+     "notes": []
     },
     {
      "key": "base",
@@ -5273,15 +5271,15 @@
      "m": 1.26,
      "supports": "Subbase",
      "requiredSn": 5.145983192262937,
-     "minThicknessMm": 118.0,
-     "suggestedThicknessMm": 120,
-     "thicknessMm": 120,
+     "minThicknessMm": 131.4,
+     "suggestedThicknessMm": 140,
+     "thicknessMm": 140,
      "thicknessIsCustom": false,
-     "snContribution": 0.7738582677165357,
-     "cumulativeSn": 5.159055118110237,
+     "snContribution": 0.9028346456692914,
+     "cumulativeSn": 5.202047244094489,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 120.0 mm."
+      "Rounded up to the next 10 mm: 140.0 mm."
      ]
     },
     {
@@ -5294,21 +5292,21 @@
      "m": 1.06,
      "supports": "Subgrade",
      "requiredSn": 7.161209628516252,
-     "minThicknessMm": 436.2,
-     "suggestedThicknessMm": 440,
-     "thicknessMm": 440,
+     "minThicknessMm": 426.8,
+     "suggestedThicknessMm": 430,
+     "thicknessMm": 430,
      "thicknessIsCustom": false,
-     "snContribution": 2.0198425196850396,
-     "cumulativeSn": 7.178897637795276,
+     "snContribution": 1.9739370078740162,
+     "cumulativeSn": 7.175984251968505,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 440.0 mm."
+      "Rounded up to the next 10 mm: 430.0 mm."
      ]
     }
    ],
-   "totalSn": 7.178897637795276,
+   "totalSn": 7.175984251968505,
    "requiredTotalSn": 7.161209628516252,
-   "totalThicknessMm": 860,
+   "totalThicknessMm": 850,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -5346,7 +5344,7 @@
     "capping": 0.06
    },
    "m": {
-    "dbm": 1.2,
+    "dbm": 1.0,
     "base": 1.21,
     "subbase": 1.18,
     "capping": 0.77
@@ -5407,18 +5405,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.32,
-     "m": 1.2,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 4.896368887409475,
-     "minThicknessMm": 243.0,
-     "suggestedThicknessMm": 245,
-     "thicknessMm": 245,
+     "minThicknessMm": 291.6,
+     "suggestedThicknessMm": 295,
+     "thicknessMm": 295,
      "thicknessIsCustom": false,
-     "snContribution": 3.703937007874016,
-     "cumulativeSn": 4.9275590551181105,
+     "snContribution": 3.7165354330708666,
+     "cumulativeSn": 4.940157480314961,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 245.0 mm."
+      "Rounded up to the next 5 mm: 295.0 mm."
      ]
     },
     {
@@ -5431,12 +5429,12 @@
      "m": 1.21,
      "supports": "Subbase",
      "requiredSn": 6.375580023899152,
-     "minThicknessMm": 202.7,
+     "minThicknessMm": 200.9,
      "suggestedThicknessMm": 205,
      "thicknessMm": 205,
      "thicknessIsCustom": false,
      "snContribution": 1.4648622047244093,
-     "cumulativeSn": 6.39242125984252,
+     "cumulativeSn": 6.40501968503937,
      "checkOk": true,
      "notes": [
       "Rounded up to the next 5 mm: 205.0 mm."
@@ -5452,21 +5450,21 @@
      "m": 1.18,
      "supports": "Subgrade",
      "requiredSn": 6.430815090080033,
-     "minThicknessMm": 9.2,
+     "minThicknessMm": 6.2,
      "suggestedThicknessMm": 10,
      "thicknessMm": 10,
      "thicknessIsCustom": false,
      "snContribution": 0.04181102362204724,
-     "cumulativeSn": 6.434232283464567,
+     "cumulativeSn": 6.446830708661418,
      "checkOk": true,
      "notes": [
       "Rounded up to the next 5 mm: 10.0 mm."
      ]
     }
    ],
-   "totalSn": 6.434232283464567,
+   "totalSn": 6.446830708661418,
    "requiredTotalSn": 6.430815090080033,
-   "totalThicknessMm": 534,
+   "totalThicknessMm": 584,
    "totalOk": true,
    "failedLayers": [
     "AC Course"
@@ -5506,7 +5504,7 @@
     "capping": 0.09
    },
    "m": {
-    "dbm": 0.77,
+    "dbm": 1.0,
     "base": 0.93,
     "subbase": 0.64,
     "capping": 1.21
@@ -5643,7 +5641,7 @@
     "capping": 0.07
    },
    "m": {
-    "dbm": 0.65,
+    "dbm": 1.0,
     "base": 0.62,
     "subbase": 0.9,
     "capping": 1.1
@@ -5701,18 +5699,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.37,
-     "m": 0.65,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.1024480520655207,
-     "minThicknessMm": 204.6,
-     "suggestedThicknessMm": 210,
-     "thicknessMm": 210,
+     "minThicknessMm": 133.0,
+     "suggestedThicknessMm": 140,
+     "thicknessMm": 140,
      "thicknessIsCustom": false,
-     "snContribution": 1.9883858267716539,
-     "cumulativeSn": 3.1537401574803154,
+     "snContribution": 2.0393700787401574,
+     "cumulativeSn": 3.204724409448819,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 210.0 mm."
+      "Rounded up to the next 10 mm: 140.0 mm."
      ]
     },
     {
@@ -5725,15 +5723,15 @@
      "m": 0.62,
      "supports": "Subbase",
      "requiredSn": 3.2092867906330813,
-     "minThicknessMm": 19.0,
-     "suggestedThicknessMm": 20,
-     "thicknessMm": 20,
+     "minThicknessMm": 1.6,
+     "suggestedThicknessMm": 10,
+     "thicknessMm": 10,
      "thicknessIsCustom": false,
-     "snContribution": 0.05858267716535433,
-     "cumulativeSn": 3.21232283464567,
+     "snContribution": 0.029291338582677164,
+     "cumulativeSn": 3.234015748031496,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 20.0 mm."
+      "Rounded up to the next 10 mm: 10.0 mm."
      ]
     },
     {
@@ -5746,21 +5744,21 @@
      "m": 0.9,
      "supports": "Subgrade",
      "requiredSn": 4.202005442499024,
-     "minThicknessMm": 214.9,
+     "minThicknessMm": 210.2,
      "suggestedThicknessMm": 220,
      "thicknessMm": 220,
      "thicknessIsCustom": false,
      "snContribution": 1.0133858267716538,
-     "cumulativeSn": 4.225708661417324,
+     "cumulativeSn": 4.24740157480315,
      "checkOk": true,
      "notes": [
       "Rounded up to the next 10 mm: 220.0 mm."
      ]
     }
    ],
-   "totalSn": 4.225708661417324,
+   "totalSn": 4.24740157480315,
    "requiredTotalSn": 4.202005442499024,
-   "totalThicknessMm": 530,
+   "totalThicknessMm": 450,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -5798,7 +5796,7 @@
     "capping": 0.06
    },
    "m": {
-    "dbm": 0.87,
+    "dbm": 1.0,
     "base": 1.08,
     "subbase": 0.79,
     "capping": 1.15
@@ -5924,7 +5922,7 @@
     "capping": 0.06
    },
    "m": {
-    "dbm": 0.99,
+    "dbm": 1.0,
     "base": 0.99,
     "subbase": 0.86,
     "capping": 1.2
@@ -6072,7 +6070,7 @@
     "capping": 0.1
    },
    "m": {
-    "dbm": 1.12,
+    "dbm": 1.0,
     "base": 0.93,
     "subbase": 0.61,
     "capping": 0.99
@@ -6133,18 +6131,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.23,
-     "m": 1.12,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.331330679120237,
-     "minThicknessMm": 255.2,
-     "suggestedThicknessMm": 260,
-     "thicknessMm": 260,
+     "minThicknessMm": 285.9,
+     "suggestedThicknessMm": 290,
+     "thicknessMm": 290,
      "thicknessIsCustom": false,
-     "snContribution": 2.636850393700788,
-     "cumulativeSn": 3.380157480314961,
+     "snContribution": 2.625984251968504,
+     "cumulativeSn": 3.3692913385826775,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 260.0 mm."
+      "Rounded up to the next 5 mm: 290.0 mm."
      ]
     },
     {
@@ -6157,12 +6155,12 @@
      "m": 0.93,
      "supports": "Subbase",
      "requiredSn": 4.1157603636400975,
-     "minThicknessMm": 167.5,
+     "minThicknessMm": 169.9,
      "suggestedThicknessMm": 170,
      "thicknessMm": 170,
      "thicknessIsCustom": false,
      "snContribution": 0.7469291338582678,
-     "cumulativeSn": 4.127086614173229,
+     "cumulativeSn": 4.116220472440945,
      "checkOk": true,
      "notes": [
       "Rounded up to the next 5 mm: 170.0 mm."
@@ -6178,21 +6176,21 @@
      "m": 0.61,
      "supports": "Subgrade",
      "requiredSn": 5.434220267328849,
-     "minThicknessMm": 453.6,
-     "suggestedThicknessMm": 455,
-     "thicknessMm": 455,
+     "minThicknessMm": 457.4,
+     "suggestedThicknessMm": 460,
+     "thicknessMm": 460,
      "thicknessIsCustom": false,
-     "snContribution": 1.311259842519685,
-     "cumulativeSn": 5.438346456692914,
+     "snContribution": 1.3256692913385824,
+     "cumulativeSn": 5.441889763779527,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 455.0 mm."
+      "Rounded up to the next 5 mm: 460.0 mm."
      ]
     }
    ],
-   "totalSn": 5.438346456692914,
+   "totalSn": 5.441889763779527,
    "requiredTotalSn": 5.434220267328849,
-   "totalThicknessMm": 944,
+   "totalThicknessMm": 979,
    "totalOk": true,
    "failedLayers": [
     "AC Course"
@@ -6232,7 +6230,7 @@
     "capping": 0.08
    },
    "m": {
-    "dbm": 0.82,
+    "dbm": 1.0,
     "base": 1.11,
     "subbase": 1.14,
     "capping": 0.97
@@ -6388,7 +6386,7 @@
     "capping": 0.09
    },
    "m": {
-    "dbm": 1.29,
+    "dbm": 1.0,
     "base": 0.68,
     "subbase": 1.03,
     "capping": 0.87
@@ -6520,7 +6518,7 @@
     "capping": 0.05
    },
    "m": {
-    "dbm": 0.98,
+    "dbm": 1.0,
     "base": 0.92,
     "subbase": 1.25,
     "capping": 0.69
@@ -6576,15 +6574,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.26,
-     "m": 0.98,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 4.903308404918905,
-     "minThicknessMm": 291.2,
-     "suggestedThicknessMm": 291.2,
-     "thicknessMm": 291.2,
+     "minThicknessMm": 285.4,
+     "suggestedThicknessMm": 285.4,
+     "thicknessMm": 285.4,
      "thicknessIsCustom": false,
-     "snContribution": 2.921171653543307,
-     "cumulativeSn": 4.903376377952756,
+     "snContribution": 2.9214173228346456,
+     "cumulativeSn": 4.903622047244094,
      "checkOk": true,
      "notes": []
     },
@@ -6598,12 +6596,12 @@
      "m": 0.92,
      "supports": "Subbase",
      "requiredSn": 6.176884532939697,
-     "minThicknessMm": 319.7,
-     "suggestedThicknessMm": 319.7,
-     "thicknessMm": 319.7,
+     "minThicknessMm": 319.6,
+     "suggestedThicknessMm": 319.6,
+     "thicknessMm": 319.6,
      "thicknessIsCustom": false,
-     "snContribution": 1.2737653543307086,
-     "cumulativeSn": 6.177141732283465,
+     "snContribution": 1.2733669291338585,
+     "cumulativeSn": 6.176988976377952,
      "checkOk": true,
      "notes": []
     },
@@ -6622,14 +6620,14 @@
      "thicknessMm": 224.7,
      "thicknessIsCustom": false,
      "snContribution": 1.2163877952755904,
-     "cumulativeSn": 7.393529527559055,
+     "cumulativeSn": 7.393376771653543,
      "checkOk": true,
      "notes": []
     }
    ],
-   "totalSn": 7.393529527559055,
+   "totalSn": 7.393376771653543,
    "requiredTotalSn": 7.393177534786366,
-   "totalThicknessMm": 958.4000000000001,
+   "totalThicknessMm": 952.5,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -6667,7 +6665,7 @@
     "capping": 0.05
    },
    "m": {
-    "dbm": 1.07,
+    "dbm": 1.0,
     "base": 0.9,
     "subbase": 0.83,
     "capping": 0.82
@@ -6725,18 +6723,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.25,
-     "m": 1.07,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.0549491322899858,
-     "minThicknessMm": 148.1,
-     "suggestedThicknessMm": 150,
-     "thicknessMm": 150,
+     "minThicknessMm": 158.4,
+     "suggestedThicknessMm": 160,
+     "thicknessMm": 160,
      "thicknessIsCustom": false,
-     "snContribution": 1.579724409448819,
-     "cumulativeSn": 3.0757874015748032,
+     "snContribution": 1.5748031496062993,
+     "cumulativeSn": 3.0708661417322833,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 150.0 mm."
+      "Rounded up to the next 10 mm: 160.0 mm."
      ]
     },
     {
@@ -6749,12 +6747,12 @@
      "m": 0.9,
      "supports": "Subbase",
      "requiredSn": 3.768896188371995,
-     "minThicknessMm": 163.1,
+     "minThicknessMm": 164.2,
      "suggestedThicknessMm": 170,
      "thicknessMm": 170,
      "thicknessIsCustom": false,
      "snContribution": 0.7228346456692913,
-     "cumulativeSn": 3.798622047244095,
+     "cumulativeSn": 3.7937007874015745,
      "checkOk": true,
      "notes": [
       "Rounded up to the next 10 mm: 170.0 mm."
@@ -6770,21 +6768,21 @@
      "m": 0.83,
      "supports": "Subgrade",
      "requiredSn": 4.621945580053088,
-     "minThicknessMm": 229.1,
-     "suggestedThicknessMm": 230,
-     "thicknessMm": 230,
+     "minThicknessMm": 230.5,
+     "suggestedThicknessMm": 240,
+     "thicknessMm": 240,
      "thicknessIsCustom": false,
-     "snContribution": 0.8267322834645668,
-     "cumulativeSn": 4.625354330708662,
+     "snContribution": 0.8626771653543308,
+     "cumulativeSn": 4.656377952755905,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 230.0 mm."
+      "Rounded up to the next 10 mm: 240.0 mm."
      ]
     }
    ],
-   "totalSn": 4.625354330708662,
+   "totalSn": 4.656377952755905,
    "requiredTotalSn": 4.621945580053088,
-   "totalThicknessMm": 650,
+   "totalThicknessMm": 670,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -6822,7 +6820,7 @@
     "capping": 0.05
    },
    "m": {
-    "dbm": 1.26,
+    "dbm": 1.0,
     "base": 0.63,
     "subbase": 0.82,
     "capping": 1.19
@@ -6972,7 +6970,7 @@
     "capping": 0.09
    },
    "m": {
-    "dbm": 1.29,
+    "dbm": 1.0,
     "base": 0.97,
     "subbase": 1.27,
     "capping": 0.89
@@ -7104,7 +7102,7 @@
     "capping": 0.07
    },
    "m": {
-    "dbm": 0.73,
+    "dbm": 1.0,
     "base": 0.85,
     "subbase": 0.98,
     "capping": 0.63
@@ -7261,7 +7259,7 @@
     "capping": 0.08
    },
    "m": {
-    "dbm": 0.76,
+    "dbm": 1.0,
     "base": 1.18,
     "subbase": 0.9,
     "capping": 1.02
@@ -7317,15 +7315,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.27,
-     "m": 0.76,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.9812681520125626,
-     "minThicknessMm": 264.6,
-     "suggestedThicknessMm": 264.6,
-     "thicknessMm": 264.6,
+     "minThicknessMm": 201.1,
+     "suggestedThicknessMm": 201.1,
+     "thicknessMm": 201.1,
      "thicknessIsCustom": false,
-     "snContribution": 2.1376346456692916,
-     "cumulativeSn": 3.981729133858268,
+     "snContribution": 2.1376771653543307,
+     "cumulativeSn": 3.981771653543307,
      "checkOk": true,
      "notes": []
     },
@@ -7344,7 +7342,7 @@
      "thicknessMm": 152.39999999999998,
      "thicknessIsCustom": false,
      "snContribution": 0.9911999999999999,
-     "cumulativeSn": 4.972929133858268,
+     "cumulativeSn": 4.972971653543307,
      "checkOk": true,
      "notes": [
       "AASHTO 1993 minimum thickness applies: 152.4 mm."
@@ -7365,14 +7363,14 @@
      "thicknessMm": 197.6,
      "thicknessIsCustom": false,
      "snContribution": 0.7001574803149607,
-     "cumulativeSn": 5.673086614173229,
+     "cumulativeSn": 5.673129133858268,
      "checkOk": true,
      "notes": []
     }
    ],
-   "totalSn": 5.673086614173229,
+   "totalSn": 5.673129133858268,
    "requiredTotalSn": 5.672886503493091,
-   "totalThicknessMm": 731.7,
+   "totalThicknessMm": 668.1999999999999,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -7589,7 +7587,7 @@
     "capping": 0.06
    },
    "m": {
-    "dbm": 0.91,
+    "dbm": 1.0,
     "base": 0.66,
     "subbase": 1.06,
     "capping": 1.04
@@ -7739,7 +7737,7 @@
     "capping": 0.08
    },
    "m": {
-    "dbm": 0.9,
+    "dbm": 1.0,
     "base": 1.23,
     "subbase": 0.6,
     "capping": 0.99
@@ -7795,15 +7793,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.38,
-     "m": 0.9,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 4.345711706471311,
-     "minThicknessMm": 179.7,
-     "suggestedThicknessMm": 179.7,
-     "thicknessMm": 179.7,
+     "minThicknessMm": 161.7,
+     "suggestedThicknessMm": 161.7,
+     "thicknessMm": 161.7,
      "thicknessIsCustom": false,
-     "snContribution": 2.4195826771653546,
-     "cumulativeSn": 4.346787401574804,
+     "snContribution": 2.419133858267717,
+     "cumulativeSn": 4.346338582677166,
      "checkOk": true,
      "notes": []
     },
@@ -7822,7 +7820,7 @@
      "thicknessMm": 0.0,
      "thicknessIsCustom": false,
      "snContribution": 0.0,
-     "cumulativeSn": 4.346787401574804,
+     "cumulativeSn": 4.346338582677166,
      "checkOk": true,
      "notes": [
       "The layers above already provide this SN, so any thickness passes this check."
@@ -7838,19 +7836,19 @@
      "m": 0.6,
      "supports": "Subgrade",
      "requiredSn": 6.672560961370655,
-     "minThicknessMm": 984.6,
-     "suggestedThicknessMm": 984.6,
-     "thicknessMm": 984.6,
+     "minThicknessMm": 984.8,
+     "suggestedThicknessMm": 984.8,
+     "thicknessMm": 984.8,
      "thicknessIsCustom": false,
-     "snContribution": 2.3258267716535435,
-     "cumulativeSn": 6.672614173228347,
+     "snContribution": 2.326299212598425,
+     "cumulativeSn": 6.672637795275591,
      "checkOk": true,
      "notes": []
     }
    ],
-   "totalSn": 6.672614173228347,
+   "totalSn": 6.672637795275591,
    "requiredTotalSn": 6.672560961370655,
-   "totalThicknessMm": 1296.6,
+   "totalThicknessMm": 1278.8,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -7888,7 +7886,7 @@
     "capping": 0.05
    },
    "m": {
-    "dbm": 1.2,
+    "dbm": 1.0,
     "base": 1.02,
     "subbase": 0.93,
     "capping": 1.16
@@ -7948,15 +7946,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.25,
-     "m": 1.2,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.1987515385480503,
-     "minThicknessMm": 194.1,
-     "suggestedThicknessMm": 194.1,
-     "thicknessMm": 194.1,
+     "minThicknessMm": 232.9,
+     "suggestedThicknessMm": 232.9,
+     "thicknessMm": 232.9,
      "thicknessIsCustom": false,
-     "snContribution": 2.29251968503937,
-     "cumulativeSn": 3.1996062992125984,
+     "snContribution": 2.2923228346456694,
+     "cumulativeSn": 3.1994094488188978,
      "checkOk": true,
      "notes": []
     },
@@ -7975,7 +7973,7 @@
      "thicknessMm": 90.4,
      "thicknessIsCustom": false,
      "snContribution": 0.5445354330708662,
-     "cumulativeSn": 3.7441417322834645,
+     "cumulativeSn": 3.743944881889764,
      "checkOk": true,
      "notes": []
     },
@@ -7994,14 +7992,14 @@
      "thicknessMm": 639.3,
      "thicknessIsCustom": false,
      "snContribution": 2.808892913385827,
-     "cumulativeSn": 6.553034645669292,
+     "cumulativeSn": 6.552837795275591,
      "checkOk": true,
      "notes": []
     }
    ],
-   "totalSn": 6.553034645669292,
+   "totalSn": 6.552837795275591,
    "requiredTotalSn": 6.5528089763012165,
-   "totalThicknessMm": 987.8,
+   "totalThicknessMm": 1026.6,
    "totalOk": true,
    "failedLayers": [
     "AC Course"
@@ -8041,7 +8039,7 @@
     "capping": 0.07
    },
    "m": {
-    "dbm": 0.61,
+    "dbm": 1.0,
     "base": 1.06,
     "subbase": 0.97,
     "capping": 1.25
@@ -8100,15 +8098,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.22,
-     "m": 0.61,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 5.003232699624727,
-     "minThicknessMm": 609.3,
-     "suggestedThicknessMm": 609.3,
-     "thicknessMm": 609.3,
+     "minThicknessMm": 371.7,
+     "suggestedThicknessMm": 371.7,
+     "thicknessMm": 371.7,
      "thicknessIsCustom": false,
-     "snContribution": 3.219214960629921,
-     "cumulativeSn": 5.003388188976378,
+     "snContribution": 3.2194488188976376,
+     "cumulativeSn": 5.003622047244095,
      "checkOk": true,
      "notes": []
     },
@@ -8127,7 +8125,7 @@
      "thicknessMm": 88.6,
      "thicknessIsCustom": false,
      "snContribution": 0.5546220472440945,
-     "cumulativeSn": 5.558010236220472,
+     "cumulativeSn": 5.558244094488189,
      "checkOk": true,
      "notes": []
     },
@@ -8141,12 +8139,12 @@
      "m": 0.97,
      "supports": "Capping Layer",
      "requiredSn": 6.261593774233054,
-     "minThicknessMm": 204.8,
-     "suggestedThicknessMm": 204.8,
-     "thicknessMm": 204.8,
+     "minThicknessMm": 204.7,
+     "suggestedThicknessMm": 204.7,
+     "thicknessMm": 204.7,
      "thicknessIsCustom": false,
-     "snContribution": 0.7038992125984254,
-     "cumulativeSn": 6.261909448818898,
+     "snContribution": 0.7035555118110236,
+     "cumulativeSn": 6.2617996062992125,
      "checkOk": true,
      "notes": []
     },
@@ -8160,19 +8158,19 @@
      "m": 1.25,
      "supports": "Subgrade",
      "requiredSn": 6.854424145907556,
-     "minThicknessMm": 172.0,
-     "suggestedThicknessMm": 172.0,
-     "thicknessMm": 172.0,
+     "minThicknessMm": 172.1,
+     "suggestedThicknessMm": 172.1,
+     "thicknessMm": 172.1,
      "thicknessIsCustom": false,
-     "snContribution": 0.5925196850393701,
-     "cumulativeSn": 6.854429133858268,
+     "snContribution": 0.5928641732283466,
+     "cumulativeSn": 6.854663779527559,
      "checkOk": true,
      "notes": []
     }
    ],
-   "totalSn": 6.854429133858268,
+   "totalSn": 6.854663779527559,
    "requiredTotalSn": 6.854424145907556,
-   "totalThicknessMm": 1190.9,
+   "totalThicknessMm": 953.3,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -8210,7 +8208,7 @@
     "capping": 0.09
    },
    "m": {
-    "dbm": 1.06,
+    "dbm": 1.0,
     "base": 1.27,
     "subbase": 1.13,
     "capping": 1.07
@@ -8271,15 +8269,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.22,
-     "m": 1.06,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.777896875455111,
-     "minThicknessMm": 219.8,
-     "suggestedThicknessMm": 219.8,
-     "thicknessMm": 219.8,
+     "minThicknessMm": 233.0,
+     "suggestedThicknessMm": 233.0,
+     "thicknessMm": 233.0,
      "thicknessIsCustom": false,
-     "snContribution": 2.0180062992125984,
-     "cumulativeSn": 3.7780062992125982,
+     "snContribution": 2.0181102362204726,
+     "cumulativeSn": 3.7781102362204724,
      "checkOk": true,
      "notes": []
     },
@@ -8298,7 +8296,7 @@
      "thicknessMm": 152.39999999999998,
      "thicknessIsCustom": false,
      "snContribution": 1.0668,
-     "cumulativeSn": 4.844806299212598,
+     "cumulativeSn": 4.844910236220472,
      "checkOk": true,
      "notes": [
       "AASHTO 1993 minimum thickness applies: 152.4 mm."
@@ -8319,7 +8317,7 @@
      "thicknessMm": 240.3,
      "thicknessIsCustom": false,
      "snContribution": 1.0690511811023624,
-     "cumulativeSn": 5.91385748031496,
+     "cumulativeSn": 5.9139614173228345,
      "checkOk": true,
      "notes": []
     },
@@ -8338,16 +8336,16 @@
      "thicknessMm": 0.0,
      "thicknessIsCustom": false,
      "snContribution": 0.0,
-     "cumulativeSn": 5.91385748031496,
+     "cumulativeSn": 5.9139614173228345,
      "checkOk": true,
      "notes": [
       "The layers above already provide this SN, so any thickness passes this check."
      ]
     }
    ],
-   "totalSn": 5.91385748031496,
+   "totalSn": 5.9139614173228345,
    "requiredTotalSn": 5.381614995709283,
-   "totalThicknessMm": 714.0999999999999,
+   "totalThicknessMm": 727.3,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -8385,7 +8383,7 @@
     "capping": 0.05
    },
    "m": {
-    "dbm": 0.7,
+    "dbm": 1.0,
     "base": 0.91,
     "subbase": 0.62,
     "capping": 0.62
@@ -8517,7 +8515,7 @@
     "capping": 0.05
    },
    "m": {
-    "dbm": 0.65,
+    "dbm": 1.0,
     "base": 0.64,
     "subbase": 0.6,
     "capping": 0.98
@@ -8605,7 +8603,7 @@
    ],
    "totalSn": 5.2404314960629925,
    "requiredTotalSn": 5.240397097014027,
-   "totalThicknessMm": 1182.3000000000002,
+   "totalThicknessMm": 1182.3,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -8643,7 +8641,7 @@
     "capping": 0.06
    },
    "m": {
-    "dbm": 0.82,
+    "dbm": 1.0,
     "base": 0.74,
     "subbase": 0.79,
     "capping": 0.9
@@ -8703,18 +8701,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.22,
-     "m": 0.82,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.9372077001624373,
-     "minThicknessMm": 154.8,
-     "suggestedThicknessMm": 160,
-     "thicknessMm": 160,
+     "minThicknessMm": 127.0,
+     "suggestedThicknessMm": 130,
+     "thicknessMm": 130,
      "thicknessIsCustom": false,
-     "snContribution": 1.1363779527559055,
-     "cumulativeSn": 3.974173228346457,
+     "snContribution": 1.1259842519685042,
+     "cumulativeSn": 3.9637795275590557,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 160.0 mm."
+      "Rounded up to the next 10 mm: 130.0 mm."
      ]
     },
     {
@@ -8727,12 +8725,12 @@
      "m": 0.74,
      "supports": "Subbase",
      "requiredSn": 4.795464144849904,
-     "minThicknessMm": 216.9,
+     "minThicknessMm": 219.6,
      "suggestedThicknessMm": 220,
      "thicknessMm": 220,
      "thicknessIsCustom": false,
      "snContribution": 0.8332283464566931,
-     "cumulativeSn": 4.80740157480315,
+     "cumulativeSn": 4.7970078740157485,
      "checkOk": true,
      "notes": [
       "Rounded up to the next 10 mm: 220.0 mm."
@@ -8748,21 +8746,21 @@
      "m": 0.79,
      "supports": "Subgrade",
      "requiredSn": 4.943404416266839,
-     "minThicknessMm": 39.8,
-     "suggestedThicknessMm": 40,
-     "thicknessMm": 40,
+     "minThicknessMm": 42.8,
+     "suggestedThicknessMm": 50,
+     "thicknessMm": 50,
      "thicknessIsCustom": false,
-     "snContribution": 0.13685039370078741,
-     "cumulativeSn": 4.944251968503937,
+     "snContribution": 0.17106299212598428,
+     "cumulativeSn": 4.9680708661417325,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 10 mm: 40.0 mm."
+      "Rounded up to the next 10 mm: 50.0 mm."
      ]
     }
    ],
-   "totalSn": 4.944251968503937,
+   "totalSn": 4.9680708661417325,
    "requiredTotalSn": 4.943404416266839,
-   "totalThicknessMm": 632,
+   "totalThicknessMm": 612,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -8800,7 +8798,7 @@
     "capping": 0.07
    },
    "m": {
-    "dbm": 0.83,
+    "dbm": 1.0,
     "base": 1.12,
     "subbase": 0.85,
     "capping": 0.71
@@ -8859,15 +8857,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.21,
-     "m": 0.83,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.2280154891588086,
-     "minThicknessMm": 284.1,
-     "suggestedThicknessMm": 284.1,
-     "thicknessMm": 284.1,
+     "minThicknessMm": 235.8,
+     "suggestedThicknessMm": 235.8,
+     "thicknessMm": 235.8,
      "thicknessIsCustom": false,
-     "snContribution": 1.9495523622047248,
-     "cumulativeSn": 3.228568110236221,
+     "snContribution": 1.9495275590551182,
+     "cumulativeSn": 3.228543307086614,
      "checkOk": true,
      "notes": []
     },
@@ -8886,7 +8884,7 @@
      "thicknessMm": 245.1,
      "thicknessIsCustom": false,
      "snContribution": 1.6211338582677166,
-     "cumulativeSn": 4.849701968503938,
+     "cumulativeSn": 4.849677165354331,
      "checkOk": true,
      "notes": []
     },
@@ -8905,7 +8903,7 @@
      "thicknessMm": 55.8,
      "thicknessIsCustom": false,
      "snContribution": 0.16805905511811023,
-     "cumulativeSn": 5.0177610236220485,
+     "cumulativeSn": 5.017736220472441,
      "checkOk": true,
      "notes": []
     },
@@ -8924,16 +8922,16 @@
      "thicknessMm": 0.0,
      "thicknessIsCustom": false,
      "snContribution": 0.0,
-     "cumulativeSn": 5.0177610236220485,
+     "cumulativeSn": 5.017736220472441,
      "checkOk": true,
      "notes": [
       "The layers above already provide this SN, so any thickness passes this check."
      ]
     }
    ],
-   "totalSn": 5.0177610236220485,
+   "totalSn": 5.017736220472441,
    "requiredTotalSn": 4.647421195952228,
-   "totalThicknessMm": 668.3,
+   "totalThicknessMm": 620.0,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -8971,7 +8969,7 @@
     "capping": 0.07
    },
    "m": {
-    "dbm": 1.19,
+    "dbm": 1.0,
     "base": 1.26,
     "subbase": 0.98,
     "capping": 0.8
@@ -9029,18 +9027,18 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.25,
-     "m": 1.19,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 4.300108268742475,
-     "minThicknessMm": 195.3,
-     "suggestedThicknessMm": 200,
-     "thicknessMm": 200,
+     "minThicknessMm": 232.3,
+     "suggestedThicknessMm": 235,
+     "thicknessMm": 235,
      "thicknessIsCustom": false,
-     "snContribution": 2.34251968503937,
-     "cumulativeSn": 4.356299212598425,
+     "snContribution": 2.3129921259842523,
+     "cumulativeSn": 4.326771653543307,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 200.0 mm."
+      "Rounded up to the next 5 mm: 235.0 mm."
      ]
     },
     {
@@ -9053,15 +9051,15 @@
      "m": 1.26,
      "supports": "Subbase",
      "requiredSn": 4.676152088191321,
-     "minThicknessMm": 64.5,
-     "suggestedThicknessMm": 65,
-     "thicknessMm": 65,
+     "minThicknessMm": 70.5,
+     "suggestedThicknessMm": 75,
+     "thicknessMm": 75,
      "thicknessIsCustom": false,
-     "snContribution": 0.32244094488188985,
-     "cumulativeSn": 4.6787401574803145,
+     "snContribution": 0.37204724409448825,
+     "cumulativeSn": 4.698818897637795,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 65.0 mm."
+      "Rounded up to the next 5 mm: 75.0 mm."
      ]
     },
     {
@@ -9074,21 +9072,21 @@
      "m": 0.98,
      "supports": "Subgrade",
      "requiredSn": 5.684511276543569,
-     "minThicknessMm": 289.7,
-     "suggestedThicknessMm": 290,
-     "thicknessMm": 290,
+     "minThicknessMm": 283.9,
+     "suggestedThicknessMm": 285,
+     "thicknessMm": 285,
      "thicknessIsCustom": false,
-     "snContribution": 1.007007874015748,
-     "cumulativeSn": 5.685748031496063,
+     "snContribution": 0.9896456692913386,
+     "cumulativeSn": 5.688464566929134,
      "checkOk": true,
      "notes": [
-      "Rounded up to the next 5 mm: 290.0 mm."
+      "Rounded up to the next 5 mm: 285.0 mm."
      ]
     }
    ],
-   "totalSn": 5.685748031496063,
+   "totalSn": 5.688464566929134,
    "requiredTotalSn": 5.684511276543569,
-   "totalThicknessMm": 720,
+   "totalThicknessMm": 760,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,
@@ -9126,7 +9124,7 @@
     "capping": 0.08
    },
    "m": {
-    "dbm": 1.01,
+    "dbm": 1.0,
     "base": 0.61,
     "subbase": 1.13,
     "capping": 0.95
@@ -9182,15 +9180,15 @@
      "heading": "DBM COURSE (Dense Bituminous Macadam)",
      "coefficientSymbol": "a2",
      "a": 0.36,
-     "m": 1.01,
+     "m": 1.0,
      "supports": "Base Course",
      "requiredSn": 3.2256677456364624,
-     "minThicknessMm": 118.8,
-     "suggestedThicknessMm": 118.8,
-     "thicknessMm": 118.8,
+     "minThicknessMm": 120.0,
+     "suggestedThicknessMm": 120.0,
+     "thicknessMm": 120.0,
      "thicknessIsCustom": false,
-     "snContribution": 1.7006173228346457,
-     "cumulativeSn": 3.226011023622047,
+     "snContribution": 1.7007874015748032,
+     "cumulativeSn": 3.2261811023622045,
      "checkOk": true,
      "notes": []
     },
@@ -9209,7 +9207,7 @@
      "thicknessMm": 334.5,
      "thicknessIsCustom": false,
      "snContribution": 1.0443248031496064,
-     "cumulativeSn": 4.270335826771653,
+     "cumulativeSn": 4.270505905511811,
      "checkOk": true,
      "notes": []
     },
@@ -9228,14 +9226,14 @@
      "thicknessMm": 133.2,
      "thicknessIsCustom": false,
      "snContribution": 0.5925826771653543,
-     "cumulativeSn": 4.862918503937007,
+     "cumulativeSn": 4.8630885826771655,
      "checkOk": true,
      "notes": []
     }
    ],
-   "totalSn": 4.862918503937007,
+   "totalSn": 4.8630885826771655,
    "requiredTotalSn": 4.8626555717073305,
-   "totalThicknessMm": 681.0,
+   "totalThicknessMm": 682.2,
    "totalOk": true,
    "failedLayers": [],
    "adequate": true,

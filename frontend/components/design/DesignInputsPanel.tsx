@@ -27,6 +27,9 @@ const COEFFICIENTS: Array<{ key: LayerKey; label: string; n: number }> = [
   { key: 'capping', label: 'Capping', n: 5 },
 ];
 
+/** AC and DBM are asphalt (bound) layers: they have no drainage coefficient m. */
+const asphalt = (key: LayerKey) => key === 'ac' || key === 'dbm';
+
 function Section({ number, title, children }: { number: number; title: string; children: React.ReactNode }) {
   return (
     <Card>
@@ -117,16 +120,16 @@ export function DesignInputsPanel({ inputs, result, update, setValidity }: Props
           </div>
           {COEFFICIENTS.filter((c) => active(c.key)).map(({ key, label, n }) => (
             <div key={key} className="grid grid-cols-[1fr_6rem_6rem] items-center gap-3">
-              <span className="text-sm text-ink">{label} <span className="text-subtle">(a{n}{key === 'ac' ? '' : `, m${n}`})</span></span>
+              <span className="text-sm text-ink">{label} <span className="text-subtle">(a{n}{asphalt(key) ? '' : `, m${n}`})</span></span>
               <NumberField label={`a${n} (${label})`} hideLabel value={inputs.a[key]} min={key === 'ac' ? 0.001 : 0} max={1}
                 onChange={(v) => update({ a: { ...inputs.a, [key]: v } })} onValidity={valid(`a.${key}`)} />
-              {key === 'ac' ? <span className="num px-3.5 text-sm text-subtle">1.0</span> : (
+              {asphalt(key) ? <span className="px-3.5 text-sm text-subtle" aria-label="No drainage coefficient">–</span> : (
                 <NumberField label={`m${n} (${label})`} hideLabel value={inputs.m[key]} min={0.4} max={1.4}
                   onChange={(v) => update({ m: { ...inputs.m, [key]: v } })} onValidity={valid(`m.${key}`)} />
               )}
             </div>
           ))}
-          <p className="text-[13px] text-subtle">Drainage coefficient m: AASHTO 1993 range 0.4 – 1.4.</p>
+          <p className="text-[13px] text-subtle">Drainage coefficient m: AASHTO 1993 range 0.4 – 1.4. AC and DBM are asphalt: no m.</p>
         </div>
       </Section>
 

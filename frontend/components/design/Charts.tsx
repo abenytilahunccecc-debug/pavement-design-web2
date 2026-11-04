@@ -14,6 +14,8 @@ const SANS = '"Times New Roman", Times, Tinos, "Liberation Serif", "Noto Serif",
 const MONO = SANS;
 
 const SUB = '₀₁₂₃₄₅₆₇₈₉';
+/** Resilient modulus shown for the AC wearing course on the cross-section (always 450,000 psi). */
+const AC_MR_PSI = 450_000;
 const subscript = (symbol: string) => symbol.replace(/\d/g, (d) => SUB[Number(d)]);
 
 interface Block {
@@ -31,10 +33,11 @@ interface Block {
 function propertyText(result: DesignResult, key: LayerKey, a: number, m: number, symbol: string): string {
   const n = symbol.slice(1);
   const coefficient = `${subscript(symbol)} ${fixed(a, 2)}`;
-  if (key === 'ac') return coefficient;
+  // AC and DBM are asphalt: no drainage coefficient. The AC modulus is shown for the report only (not used in the SN design).
+  if (key === 'ac') return `${coefficient} · MR ${thousands(AC_MR_PSI)} psi`;
   if (key === 'dbm') {
     const mr = result.mrPsi.dbm;
-    return `${coefficient} · m${subscript(n)} ${fixed(m, 2)}${mr ? ` · MR ${thousands(mr)} psi` : ''}`;
+    return `${coefficient}${mr ? ` · MR ${thousands(mr)} psi` : ''}`;
   }
   const cbr = result.cbr[key as UnboundKey];
   return `${coefficient} · m${subscript(n)} ${fixed(m, 2)}${cbr !== undefined ? ` · ${result.cbrIsEstimated ? '≈' : ''}CBR ${fixed(cbr, 0)} %` : ''}`;
@@ -61,10 +64,11 @@ export function CrossSection({ result, ref, title = true, compact = false }:
   const prefix = `ps${useId().replace(/[^a-zA-Z0-9]/g, '')}`;
 
   // compact = phone-width drawing: blocks, depth scale and numbered layers (the names are listed under it in HTML).
-  const W = compact ? 310 : 700;
+  // Seen from the front-left, like a photographed core: front face, left side face and the asphalt top.
+  const W = compact ? 310 : 740;
   const titleH = title && !compact ? 44 : 8;
-  const depth = 14, skew = 22;                     // 3-D top and side faces
-  const x0 = compact ? 54 : 78, bw = compact ? 200 : 240;   // front face of the block
+  const depth = compact ? 11 : 24, sideW = compact ? 28 : 64;   // the side and top faces recede up and to the left
+  const x0 = (compact ? 46 : 70) + sideW, bw = compact ? 180 : 250;   // front face of the block
   const top = titleH + depth + 6;                 // top edge of the front face
   const pavementPx = 300, minPx = 10, subgradePx = 78;
   const total = result.totalThicknessMm || 1;
@@ -89,11 +93,32 @@ export function CrossSection({ result, ref, title = true, compact = false }:
   });
   const blockBottom = y + subgradePx;
 
+  // Slightly uneven layer boundaries (smooth, repeatable). Boundary i is the top of blocks[i]; the road surface is flat.
+  const sideLen = Math.hypot(sideW, depth);
+  const amplitude = (i: number) => {
+    if (i === 0) return 0;
+    const asphalt = (k: MaterialKey) => k === 'ac' || k === 'dbm';
+    const a = asphalt(blocks[i - 1].key) && asphalt(blocks[i].key) ? 0.7 : blocks[i].key === 'subgrade' ? 2.6 : 1.8;
+    return Math.min(a * (compact ? 0.6 : 1), blocks[i - 1].h / 4, blocks[i].h / 4);
+  };
+  const wave = (i: number, d: number) =>
+    amplitude(i) * (0.6 * Math.sin(d * 0.045 + i * 1.7) + 0.4 * Math.sin(d * 0.11 + i * 0.9));
+  const STEPS = compact ? 18 : 36;
+  const frontEdge = (i: number): Array<[number, number]> =>
+    Array.from({ length: STEPS + 1 }, (_, k) => { const v = (k / STEPS) * bw; return [x0 + v, blocks[i].y + wave(i, v)]; });
+  const sideEdge = (i: number): Array<[number, number]> =>   // from the front corner to the back
+    Array.from({ length: 9 }, (_, k) => { const u = k / 8; return [x0 - u * sideW, blocks[i].y - u * depth + wave(i, -u * sideLen)]; });
+  const flatFront = (yb: number): Array<[number, number]> => [[x0, yb], [x0 + bw, yb]];
+  const flatSide = (yb: number): Array<[number, number]> => [[x0, yb], [x0 - sideW, yb - depth]];
+  const pts = (list: Array<[number, number]>) =>
+    list.map(([px, py]) => `${Math.round(px * 10) / 10},${Math.round(py * 10) / 10}`).join(' ');
+
   // Labels: start level with the layer middle, then push apart so two-line labels never overlap.
   const gap = compact ? 24 : 38;
   const labelY: number[] = [];
   blocks.forEach((b, i) => labelY.push(Math.max(b.y + b.h / 2, i ? labelY[i - 1] + gap : top + 8)));
-  const labelX = x0 + bw + skew + 34;
+  const labelX = x0 + bw + 40;
+  const scaleX = x0 - sideW - 14;                 // depth scale, left of the side face
 
   // Depth scale.
   const step = niceStep(total);
@@ -113,7 +138,7 @@ export function CrossSection({ result, ref, title = true, compact = false }:
 
   // Legend.
   const legendTop = Math.max(blockBottom, labelY[labelY.length - 1] + 22) + 30;
-  const perRow = 3, legendRowH = 24, legendColW = (W - x0 + 40) / perRow;
+  const perRow = 3, legendRowH = 24, legendColW = W / perRow;
   const legendRows = Math.ceil(blocks.length / perRow);
   const H = compact ? Math.max(blockBottom, labelY[labelY.length - 1] + 14) + 6
     : legendTop + legendRows * legendRowH + (anyClamped ? 22 : 6);
@@ -142,65 +167,81 @@ export function CrossSection({ result, ref, title = true, compact = false }:
         </g>
       )}
 
-      {/* Layers: side face, front face, then the textured top of the asphalt. */}
-      {blocks.map((b) => {
+      {/* Soft shadow on the ground, cast to the left. */}
+      <ellipse cx={x0 - sideW * 0.4} cy={blockBottom - depth * 0.6} rx={bw * 0.55} ry={compact ? 8 : 16} fill="#000"
+        fillOpacity={0.22} filter={`url(#${prefix}-blur)`} />
+
+      {/* Layers: each band runs from its (slightly uneven) top boundary to the next one, on the side and front faces. */}
+      {blocks.map((b, i) => {
         const fill = `url(#${patternId(prefix, b.key)})`;
         const isSub = b.key === 'subgrade';
-        const side = `${x0 + bw},${b.y} ${x0 + bw + skew},${b.y - depth} ${x0 + bw + skew},${b.y + b.h - depth} ${x0 + bw},${b.y + b.h}`;
+        const front = [...frontEdge(i), ...(isSub ? flatFront(blockBottom) : frontEdge(i + 1)).reverse()];
+        const side = [...sideEdge(i).reverse(), ...(isSub ? flatSide(blockBottom) : sideEdge(i + 1))];
         return (
           <g key={b.key} mask={isSub ? fadeMask : undefined}>
-            <polygon points={side} fill={fill} />
-            <polygon points={side} fill="#000" fillOpacity={0.32} />
-            <rect x={x0} y={b.y} width={bw} height={b.h} fill={fill} />
-            {/* Light from above: a soft highlight on the upper part of each face. */}
-            <rect x={x0} y={b.y} width={bw} height={Math.min(4, b.h)} fill="#fff" fillOpacity={0.07} />
-            {!isSub && <line x1={x0} x2={x0 + bw} y1={b.y + b.h} y2={b.y + b.h} stroke="#000" strokeOpacity={0.45} strokeWidth={0.8} />}
-            {!isSub && <line x1={x0 + bw} x2={x0 + bw + skew} y1={b.y + b.h} y2={b.y + b.h - depth} stroke="#000" strokeOpacity={0.35} strokeWidth={0.8} />}
+            <polygon points={pts(side)} fill={fill} />
+            <polygon points={pts(side)} fill="#000" fillOpacity={0.24} />
+            <polygon points={pts(front)} fill={fill} />
             {!b.ok && (
               <rect x={x0 + 1} y={b.y + 1} width={bw - 2} height={b.h - 2} fill="none" stroke={BAD} strokeWidth={2} strokeDasharray="6 3" />
             )}
           </g>
         );
       })}
+      {/* Boundaries: a faint shadow line, plus the light tack coat between the two asphalt layers. */}
+      {blocks.slice(1).map((b, j) => {
+        const i = j + 1;
+        const edge = pts([...sideEdge(i).reverse(), ...frontEdge(i)]);
+        const asphaltJoint = blocks[i - 1].key === 'ac' && b.key === 'dbm';
+        return (
+          <g key={`edge-${b.key}`} fill="none">
+            <polyline points={edge} stroke="#000" strokeOpacity={0.3} strokeWidth={0.9} />
+            {asphaltJoint && <polyline points={edge} stroke="#e6e6e6" strokeOpacity={0.75} strokeWidth={compact ? 0.8 : 1.2}
+              transform="translate(0 0.9)" />}
+          </g>
+        );
+      })}
+      {/* Front corner edge catches the light. */}
+      <line x1={x0} x2={x0} y1={top} y2={pavementBottom} stroke="#fff" strokeOpacity={0.16} strokeWidth={1} />
       {blocks.length > 1 && (() => {
         const first = blocks[0];
-        const topFace = `${x0},${first.y} ${x0 + skew},${first.y - depth} ${x0 + bw + skew},${first.y - depth} ${x0 + bw},${first.y}`;
+        const topFace = `${x0},${first.y} ${x0 + bw},${first.y} ${x0 + bw - sideW},${first.y - depth} ${x0 - sideW},${first.y - depth}`;
         return (
           <g>
             <polygon points={topFace} fill={`url(#${patternId(prefix, first.key)})`} />
             <polygon points={topFace} fill={`url(#${prefix}-sheen)`} />
-            <polyline points={`${x0},${first.y} ${x0 + bw},${first.y} ${x0 + bw + skew},${first.y - depth}`}
-              fill="none" stroke="#fff" strokeOpacity={0.22} strokeWidth={1} />
+            <polyline points={`${x0 - sideW},${first.y - depth} ${x0},${first.y} ${x0 + bw},${first.y}`}
+              fill="none" stroke="#fff" strokeOpacity={0.28} strokeWidth={1} />
           </g>
         );
       })()}
 
       {/* Depth scale (mm). */}
       <g fill={INK} stroke={INK} fontSize={10.5} style={{ fontFamily: MONO }}>
-        <line x1={x0 - 16} x2={x0 - 16} y1={top} y2={pavementBottom} strokeOpacity={0.55} />
-        <text x={x0 - 16} y={top - 8} textAnchor="middle" stroke="none" fillOpacity={0.6} style={{ fontFamily: SANS }}>mm</text>
+        <line x1={scaleX} x2={scaleX} y1={top} y2={pavementBottom} strokeOpacity={0.55} />
+        <text x={scaleX} y={top - 8} textAnchor="middle" stroke="none" fillOpacity={0.6} style={{ fontFamily: SANS }}>mm</text>
         {ticks.map((mm) => {
           const ty = tickY(mm);
           const tooClose = pavementBottom - ty < 11;
           return (
             <g key={mm}>
-              <line x1={x0 - 21} x2={x0 - 16} y1={ty} y2={ty} strokeOpacity={0.55} />
-              {!tooClose && <text x={x0 - 25} y={ty + 3.5} textAnchor="end" stroke="none" fillOpacity={0.62}>{mm}</text>}
+              <line x1={scaleX - 5} x2={scaleX} y1={ty} y2={ty} strokeOpacity={0.55} />
+              {!tooClose && <text x={scaleX - 9} y={ty + 3.5} textAnchor="end" stroke="none" fillOpacity={0.62}>{mm}</text>}
             </g>
           );
         })}
-        <line x1={x0 - 24} x2={x0 - 16} y1={pavementBottom} y2={pavementBottom} strokeOpacity={0.8} />
-        <text x={x0 - 27} y={pavementBottom + 3.5} textAnchor="end" stroke="none" fontWeight={700}>{fixed(total, 0)}</text>
+        <line x1={scaleX - 8} x2={scaleX} y1={pavementBottom} y2={pavementBottom} strokeOpacity={0.8} />
+        <text x={scaleX - 11} y={pavementBottom + 3.5} textAnchor="end" stroke="none" fontWeight={700}>{fixed(total, 0)}</text>
       </g>
 
       {/* Compact: a numbered badge per layer, matching the list under the drawing. */}
       {compact && blocks.map((b, i) => {
-        const anchorX = x0 + bw + skew - 6, anchorY = b.y + b.h / 2 - depth / 2;
-        const cx = x0 + bw + skew + 20, cy = labelY[i];
+        const anchorX = x0 + bw - 7, anchorY = b.y + b.h / 2;
+        const cx = x0 + bw + 26, cy = labelY[i];
         return (
           <g key={`badge-${b.key}`}>
-            <circle cx={anchorX} cy={anchorY} r={2.2} fill={INK} />
-            <polyline points={`${anchorX},${anchorY} ${cx - 11},${cy}`} fill="none" stroke={INK} strokeOpacity={0.4} strokeWidth={1} />
+            <circle cx={anchorX} cy={anchorY} r={2.2} fill="#fff" stroke="#000" strokeOpacity={0.5} strokeWidth={0.7} />
+            <polyline points={`${anchorX + 2.2},${anchorY} ${cx - 11},${cy}`} fill="none" stroke={INK} strokeOpacity={0.4} strokeWidth={1} />
             <circle cx={cx} cy={cy} r={10} fill={b.ok ? INK : BAD} />
             <text x={cx} y={cy + 4.5} fontSize={12.5} fontWeight={700} textAnchor="middle" fill="var(--surface, #fff)">{i + 1}</text>
           </g>
@@ -209,12 +250,12 @@ export function CrossSection({ result, ref, title = true, compact = false }:
 
       {/* Labels with leader lines. */}
       {!compact && blocks.map((b, i) => {
-        const anchorY = b.y + b.h / 2 - depth / 2;
+        const anchorX = x0 + bw - 8, anchorY = b.y + b.h / 2;
         const ly = labelY[i];
         return (
           <g key={`label-${b.key}`}>
-            <circle cx={x0 + bw + skew - 6} cy={anchorY} r={2.2} fill={INK} />
-            <polyline points={`${x0 + bw + skew - 6},${anchorY} ${labelX - 14},${ly - 4} ${labelX - 6},${ly - 4}`}
+            <circle cx={anchorX} cy={anchorY} r={2.4} fill="#fff" stroke="#000" strokeOpacity={0.5} strokeWidth={0.8} />
+            <polyline points={`${anchorX + 2.4},${anchorY} ${labelX - 14},${ly - 4} ${labelX - 6},${ly - 4}`}
               fill="none" stroke={INK} strokeOpacity={0.4} strokeWidth={1} />
             <text x={labelX} y={ly} fontSize={13} fontWeight={600} fill={b.ok ? INK : BAD}>
               {b.name}
