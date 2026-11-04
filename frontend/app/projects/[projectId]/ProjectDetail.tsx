@@ -99,6 +99,11 @@ function ProjectContent() {
 
   const projectPending = pending?.kind === 'project';
   const designs = project.designs.filter((d) => !(pending?.kind === 'design' && pending.id === d.id));
+  const designActions = (d: (typeof designs)[number]) => [
+    { label: 'Open design', icon: <Pencil size={16} />, href: `/projects/${project.id}/designs/${d.id}` },
+    { label: 'Delete design…', icon: <Trash size={16} />, danger: true,
+      onSelect: () => setConfirming({ kind: 'design', id: d.id, name: d.name }) },
+  ];
 
   return (
     <>
@@ -138,7 +143,37 @@ function ProjectContent() {
             <ButtonLink href={`/projects/${project.id}/designs/new`}>Create the first design</ButtonLink>
           </EmptyState>
         ) : (
-          <Card className="overflow-x-auto p-0 sm:p-0">
+          <Card className="@container p-0 sm:p-0">
+            {/* Narrow screens: one card per design, so nothing scrolls sideways. */}
+            <ul className="divide-y divide-line @min-[46rem]:hidden">
+              {designs.map((d) => (
+                <li key={d.id} className="py-4 first:pt-0 last:pb-0">
+                  <div className="flex items-start gap-2">
+                    <div className="min-w-0 flex-1">
+                      <Link href={`/projects/${project.id}/designs/${d.id}`}
+                        className="inline-flex min-h-7 items-center font-medium break-words text-ink hover:underline underline-offset-4">{d.name}</Link>
+                      <div className="mt-1"><VerdictBadge adequate={d.adequate} /></div>
+                    </div>
+                    <ActionMenu label={`Actions for ${d.name}`} items={designActions(d)} />
+                  </div>
+                  <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-2 text-sm tabular-nums @md:grid-cols-5">
+                    {[
+                      ['Total SN', fixed(d.totalSn)],
+                      ['Required SN', fixed(d.requiredSn)],
+                      ['Thickness', `${fixed(d.totalThicknessMm, 1)} mm`],
+                      ['Layers', String(d.layerCount)],
+                      ['Updated', new Date(d.updatedAt).toLocaleDateString()],
+                    ].map(([label, value]) => (
+                      <div key={label}>
+                        <dt className="text-[13px] text-muted">{label}</dt>
+                        <dd className="text-ink">{value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </li>
+              ))}
+            </ul>
+            <div className="hidden overflow-x-auto @min-[46rem]:block">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-line text-left text-[13px] uppercase tracking-[0.08em] text-muted">
@@ -160,16 +195,13 @@ function ProjectContent() {
                     <td className="px-3">{d.layerCount}</td>
                     <td className="px-3 text-muted">{new Date(d.updatedAt).toLocaleDateString()}</td>
                     <td className="px-3 py-1 text-right">
-                      <ActionMenu label={`Actions for ${d.name}`} items={[
-                        { label: 'Open design', icon: <Pencil size={16} />, href: `/projects/${project.id}/designs/${d.id}` },
-                        { label: 'Delete design…', icon: <Trash size={16} />, danger: true,
-                          onSelect: () => setConfirming({ kind: 'design', id: d.id, name: d.name }) },
-                      ]} />
+                      <ActionMenu label={`Actions for ${d.name}`} items={designActions(d)} />
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
+            </div>
           </Card>
         )}
       </div>
