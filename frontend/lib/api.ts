@@ -40,7 +40,7 @@ export function onUnauthorized(listener: () => void) {
   return () => unauthorizedListeners.delete(listener);
 }
 
-async function request<T>(path: string, options: { method?: string; body?: unknown; auth?: boolean } = {}): Promise<T> {
+async function request<T>(path: string, options: { method?: string; body?: unknown; auth?: boolean; keepalive?: boolean } = {}): Promise<T> {
   const headers: Record<string, string> = {};
   if (options.body !== undefined) headers['Content-Type'] = 'application/json';
   const token = getToken();
@@ -55,6 +55,7 @@ async function request<T>(path: string, options: { method?: string; body?: unkno
       headers,
       body: options.body === undefined ? undefined : JSON.stringify(options.body),
       signal: controller.signal,
+      keepalive: options.keepalive, // lets a pending delete finish even if the tab is being closed
     });
   } catch {
     throw new ApiError(0, [controller.signal.aborted
@@ -106,7 +107,7 @@ export const api = {
     get: (id: string) => request<ProjectDetail>(`/projects/${id}`),
     update: (id: string, body: { name?: string; location?: string; description?: string }) =>
       request<Project>(`/projects/${id}`, { method: 'PATCH', body }),
-    remove: (id: string) => request<{ deleted: boolean }>(`/projects/${id}`, { method: 'DELETE' }),
+    remove: (id: string, keepalive = false) => request<{ deleted: boolean }>(`/projects/${id}`, { method: 'DELETE', keepalive }),
     export: (id: string, format: 'csv' | 'xlsx') => download(`/projects/${id}/export?format=${format}`, `designs.${format}`),
   },
 
@@ -119,7 +120,7 @@ export const api = {
     get: (id: string) => request<SavedDesign>(`/designs/${id}`),
     update: (id: string, body: { name?: string; inputs?: Partial<DesignInput> }) =>
       request<SavedDesign>(`/designs/${id}`, { method: 'PATCH', body }),
-    remove: (id: string) => request<{ deleted: boolean }>(`/designs/${id}`, { method: 'DELETE' }),
+    remove: (id: string, keepalive = false) => request<{ deleted: boolean }>(`/designs/${id}`, { method: 'DELETE', keepalive }),
   },
 
   dashboard: () => request<Dashboard>('/dashboard'),

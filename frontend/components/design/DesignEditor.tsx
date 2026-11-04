@@ -181,7 +181,7 @@ function SummaryBar({ result, stale, calculating, waitedS, hasServerError, hidde
     detail = `SN ${fixed(result.totalSn)} / ${fixed(result.requiredTotalSn)} · ${fixed(result.totalThicknessMm, 0)} mm`;
   }
   const Icon = tone === 'ok' ? CheckCircle : tone === 'bad' ? XCircle : Alert;
-  const iconClass = tone === 'ok' ? 'bg-ok-solid' : tone === 'bad' ? 'bg-bad-solid' : 'bg-line-strong';
+  const iconClass = tone === 'ok' ? 'bg-ok-solid' : tone === 'bad' ? 'bg-bad-solid' : 'bg-warn-solid';
 
   return (
     <div className={`print-hidden sticky bottom-3 z-30 mt-6 transition-opacity duration-200 lg:hidden ${hidden ? 'pointer-events-none opacity-0' : 'opacity-100'}`}
@@ -189,7 +189,7 @@ function SummaryBar({ result, stale, calculating, waitedS, hasServerError, hidde
       <button type="button" tabIndex={hidden ? -1 : 0}
         onClick={() => document.getElementById('design-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
         className="shadow-float flex min-h-14 w-full items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-2.5 text-left">
-        <span className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-white ${iconClass}`}>
+        <span className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-on-panel ${iconClass}`}>
           <Icon size={18} className={tone === 'wait' && calculating ? 'animate-pulse' : ''} />
         </span>
         <span className="min-w-0 flex-1">

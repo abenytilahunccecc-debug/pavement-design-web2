@@ -30,7 +30,7 @@ export function BackLink({ href, children }: { href: string; children: ReactNode
   );
 }
 
-type Variant = 'primary' | 'secondary' | 'danger' | 'light' | 'ghost-light';
+type Variant = 'primary' | 'secondary' | 'danger' | 'danger-solid' | 'light' | 'ghost-light';
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & { variant?: Variant };
 
 const BASE = 'inline-flex min-h-10 items-center justify-center gap-2 rounded-full px-5 py-2 text-sm font-medium transition disabled:cursor-not-allowed';
@@ -38,9 +38,11 @@ const BUTTON_STYLES: Record<Variant, string> = {
   primary: 'bg-primary text-on-primary hover:bg-primary-hover disabled:opacity-40',
   secondary: 'border border-line-strong bg-surface text-ink hover:bg-raised disabled:opacity-50',
   danger: 'border border-line-strong bg-surface text-bad hover:bg-bad-soft',
+  // The final "Delete" in a confirmation dialog.
+  'danger-solid': 'bg-bad text-surface hover:opacity-90',
   // For use on photos / dark panels.
-  light: 'bg-white text-[#111113] hover:bg-white/90',
-  'ghost-light': 'border border-white/40 bg-white/10 text-white backdrop-blur hover:bg-white/20',
+  light: 'bg-on-photo text-scrim hover:bg-on-photo/90',
+  'ghost-light': 'border border-on-photo/40 bg-on-photo/10 text-on-photo backdrop-blur hover:bg-on-photo/20',
 };
 
 export function Button({ variant = 'primary', className = '', type = 'button', ...props }: ButtonProps) {

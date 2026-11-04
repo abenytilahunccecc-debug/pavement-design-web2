@@ -35,30 +35,30 @@ export function DesignResults({ result, inputs, stale, setThickness, setValidity
 
   return (
     <div className="space-y-4" aria-live="polite">
-      {/* Verdict: a dark panel, like the feature card in the reference design. */}
-      <section ref={verdictRef} className="shadow-float overflow-hidden rounded-2xl bg-[#111113] p-5 text-white sm:p-6">
+      {/* Verdict: a dark panel (theme colours: it is lifted off the background in dark mode too). */}
+      <section ref={verdictRef} className="shadow-float overflow-hidden rounded-2xl border border-panel-line bg-panel p-5 text-on-panel sm:p-6">
         <div className="flex items-start gap-3">
           <span className={`mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
-            tone === 'ok' ? 'bg-[#16a34a]' : tone === 'bad' ? 'bg-[#dc2626]' : 'bg-[#b54708]'}`}>
+            tone === 'ok' ? 'bg-ok-solid' : tone === 'bad' ? 'bg-bad-solid' : 'bg-warn-solid'} text-on-panel`}>
             <VerdictIcon size={20} />
           </span>
           <div className="min-w-0">
-            <p className="text-[13px] font-medium uppercase tracking-[0.12em] text-white/60">Design verdict</p>
+            <p className="text-[13px] font-medium uppercase tracking-[0.12em] text-on-panel-muted">Design verdict</p>
             <p className="text-2xl font-semibold tracking-[-0.02em]">
               {stale ? 'Results not updated' : r.adequate ? 'Design is ADEQUATE' : 'Design is NOT ADEQUATE'}
             </p>
           </div>
         </div>
-        <dl className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-white/10 sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+        <dl className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-panel-line sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
           {[['Total SN', fixed(r.totalSn)], ['Required SN', fixed(r.requiredTotalSn)],
             ['Total thickness', `${fixed(r.totalThicknessMm, 1)} mm`], ['ZR', fixed(r.zr)]].map(([label, value]) => (
-            <div key={label} className="bg-[#111113] px-4 py-3">
-              <dt className="text-[13px] uppercase tracking-[0.1em] text-white/60">{label}</dt>
-              <dd className="num mt-0.5 text-lg font-semibold text-white">{stale ? '—' : value}</dd>
+            <div key={label} className="bg-panel px-4 py-3">
+              <dt className="text-[13px] uppercase tracking-[0.1em] text-on-panel-muted">{label}</dt>
+              <dd className="num mt-0.5 text-lg font-semibold text-on-panel">{stale ? '—' : value}</dd>
             </div>
           ))}
         </dl>
-        <p className="mt-4 text-sm text-white/75">
+        <p className="mt-4 text-sm text-on-panel-soft">
           {stale ? 'An input cannot be read, so these results are out of date. Fix the red field and they update automatically.' : detail}
         </p>
       </section>

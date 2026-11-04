@@ -38,6 +38,16 @@
   --color-warn: var(--warn);
   --color-warn-soft: var(--warn-soft);
   --color-chart: var(--chart);
+  --color-warn-solid: var(--warn-solid);
+  /* Dark feature panels (verdict, announcement strip, start-page tiles) */
+  --color-panel: var(--panel);
+  --color-panel-line: var(--panel-line);
+  --color-on-panel: var(--on-panel);
+  --color-on-panel-soft: var(--on-panel-soft);
+  --color-on-panel-muted: var(--on-panel-muted);
+  /* Over photos: the same in both themes, because the photo is the same */
+  --color-scrim: #000000;
+  --color-on-photo: #ffffff;
 }
 
 /* ---------- Light (default) ---------- */
@@ -65,6 +75,12 @@
   --warn: #93370d;
   --warn-soft: #fffaeb;
   --chart: #2f5fd0;
+  --warn-solid: #b54708;
+  --panel: #111113;
+  --panel-line: #2a2a2e;
+  --on-panel: #ffffff;
+  --on-panel-soft: #c4c4c9;
+  --on-panel-muted: #a1a1a8;
   --shadow-card: 0 1px 2px rgb(16 16 20 / 0.04), 0 1px 1px rgb(16 16 20 / 0.03);
   --shadow-float: 0 24px 60px -20px rgb(16 16 20 / 0.45);
 }
@@ -95,6 +111,12 @@
     --warn: #fdb022;
     --warn-soft: rgb(253 176 34 / 0.1);
     --chart: #7aa2ff;
+    --warn-solid: #dc6803;
+    --panel: #202026;
+    --panel-line: #34343c;
+    --on-panel: #f4f4f5;
+    --on-panel-soft: #cfcfd4;
+    --on-panel-muted: #a9a9b2;
     --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
     --shadow-float: 0 24px 60px -20px rgb(0 0 0 / 0.8);
   }
@@ -123,6 +145,12 @@
   --warn: #fdb022;
   --warn-soft: rgb(253 176 34 / 0.1);
   --chart: #7aa2ff;
+  --warn-solid: #dc6803;
+  --panel: #202026;
+  --panel-line: #34343c;
+  --on-panel: #f4f4f5;
+  --on-panel-soft: #cfcfd4;
+  --on-panel-muted: #a9a9b2;
   --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
   --shadow-float: 0 24px 60px -20px rgb(0 0 0 / 0.8);
 }
@@ -148,6 +176,9 @@ body {
 
 .shadow-card { box-shadow: var(--shadow-card); }
 .shadow-float { box-shadow: var(--shadow-float); }
+
+/* Announcement strip: once closed it stays hidden, even before the page script runs (see lib/theme-script.ts). */
+[data-announcement="closed"] .announcement-bar { display: none; }
 
 /* Announcement strip: scroll the items sideways on small screens instead of wrapping. */
 .no-scrollbar { scrollbar-width: none; }

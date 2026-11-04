@@ -32,12 +32,20 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         <script dangerouslySetInnerHTML={{ __html: THEME_BOOT_SCRIPT }} />
       </head>
       <body className="flex min-h-full flex-col font-sans text-ink">
+        {/* First stop for keyboard users: jump past the announcement strip and the header. */}
+        <a href="#main"
+          className="sr-only rounded-full bg-primary px-4 py-2 text-sm font-semibold text-on-primary focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50">
+          Skip to main content
+        </a>
         <AuthProvider>
-          <AnnouncementBar />
+          {/* Reads the URL (hidden on the calculator and design pages), so it streams in like the header. */}
+          <Suspense fallback={null}>
+            <AnnouncementBar />
+          </Suspense>
           <Suspense fallback={<HeaderFallback />}>
             <AppHeader />
           </Suspense>
-          <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 sm:px-6 sm:py-10">{children}</main>
+          <main id="main" tabIndex={-1} className="mx-auto w-full max-w-7xl flex-1 px-4 py-8 focus:outline-none sm:px-6 sm:py-10">{children}</main>
           <SiteFooter />
         </AuthProvider>
       </body>
