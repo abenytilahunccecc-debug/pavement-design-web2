@@ -14,7 +14,9 @@ const NAV = [
   { href: '/calculator', label: 'Quick calculator' },
 ];
 
-const pill = 'inline-flex h-10 items-center rounded-full px-4 text-sm font-medium transition';
+const pill = 'inline-flex h-10 items-center rounded-lg px-3.5 text-sm font-medium transition';
+// Current page: navy underline sitting on the header's bottom border.
+const activeBar = 'relative text-ink after:absolute after:inset-x-3 after:-bottom-[13px] after:h-0.5 after:rounded-full after:bg-primary';
 
 export function AppHeader() {
   const { status: authStatus, user, logout } = useAuth();
@@ -30,11 +32,11 @@ export function AppHeader() {
     : status === 'signed-out' ? [{ href: '/calculator', label: 'Quick calculator' }] : [];
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/70 bg-canvas/80 backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-line bg-surface/90 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6">
         <Link href="/" onClick={close} className="flex shrink-0 items-center gap-2.5 text-ink">
           <LogoMark size={24} />
-          <span className="leading-tight">
+          <span className="border-l border-line pl-2.5 leading-tight">
             <span className="block text-[17px] font-semibold tracking-[-0.02em]">{SITE.name}</span>
             <span className="hidden text-[13px] text-muted lg:block">{SITE.tagline}</span>
           </span>
@@ -45,7 +47,7 @@ export function AppHeader() {
             const active = pathname.startsWith(item.href);
             return (
               <Link key={item.href} href={item.href} aria-current={active ? 'page' : undefined}
-                className={`${pill} ${active ? 'bg-surface text-ink shadow-card' : 'text-muted hover:text-ink'}`}>
+                className={`${pill} ${active ? activeBar : 'text-muted hover:bg-raised hover:text-ink'}`}>
                 {item.label}
               </Link>
             );
@@ -53,17 +55,17 @@ export function AppHeader() {
           {status === 'signed-in' && (
             <>
               <span className="max-w-40 truncate px-2 text-sm text-subtle" title={user?.email}>{user?.name || user?.email}</span>
-              <button onClick={logout} className={`${pill} text-muted hover:text-ink`}>Sign out</button>
+              <button onClick={logout} className={`${pill} cursor-pointer text-muted hover:bg-raised hover:text-ink`}>Sign out</button>
             </>
           )}
           {status === 'signed-out' && (
             <>
-              <Link href="/login" className={`${pill} text-muted hover:text-ink`}>Sign in</Link>
-              <Link href="/register" className={`${pill} ml-1 bg-primary text-on-primary hover:bg-primary-hover`}>Create free account</Link>
+              <Link href="/login" className={`${pill} text-muted hover:bg-raised hover:text-ink`}>Sign in</Link>
+              <Link href="/register" className={`${pill} ml-1 bg-primary font-semibold text-on-primary shadow-card hover:bg-primary-hover`}>Create free account</Link>
             </>
           )}
           {/* Help lives in the header (and the phone menu) so it never covers the page content. */}
-          <a href={mailto(`${SITE.name} — help`)} className={`${pill} gap-1.5 px-3 text-muted hover:text-ink`}>
+          <a href={mailto(`${SITE.name} — help`)} className={`${pill} gap-1.5 px-3 text-muted hover:bg-raised hover:text-ink`}>
             <HelpCircle size={16} />Help
           </a>
           <ThemeToggle className="ml-1" />
@@ -73,7 +75,7 @@ export function AppHeader() {
           <ThemeToggle />
           <button type="button" onClick={() => setMenuOpen((open) => !open)} aria-expanded={menuOpen} aria-controls="mobile-menu"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full text-ink transition hover:bg-raised">
+            className="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-lg text-ink transition hover:bg-raised">
             {menuOpen ? <Close size={20} /> : <Menu size={20} />}
           </button>
         </div>
@@ -85,7 +87,7 @@ export function AppHeader() {
             {links.map((item) => (
               <li key={item.href}>
                 <Link href={item.href} onClick={close}
-                  className={`flex h-12 items-center border-b border-line text-[15px] ${pathname.startsWith(item.href) ? 'font-semibold text-ink' : 'text-muted'}`}>
+                  className={`flex h-12 items-center border-b border-line text-[15px] ${pathname.startsWith(item.href) ? 'border-l-2 border-l-primary pl-3 font-semibold text-ink' : 'text-muted'}`}>
                   {item.label}
                 </Link>
               </li>
@@ -103,7 +105,7 @@ export function AppHeader() {
           {status === 'signed-out' && (
             <div className="mt-4 grid grid-cols-2 gap-2">
               <Link href="/login" onClick={close} className={`${pill} justify-center border border-line-strong text-ink`}>Sign in</Link>
-              <Link href="/register" onClick={close} className={`${pill} justify-center bg-primary text-on-primary`}>Create account</Link>
+              <Link href="/register" onClick={close} className={`${pill} justify-center bg-primary font-semibold text-on-primary`}>Create account</Link>
             </div>
           )}
         </nav>

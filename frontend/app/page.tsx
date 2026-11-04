@@ -22,11 +22,11 @@ export default function HomePage() {
       {/* ---------- Hero: headline left, dark photo card right ---------- */}
       <section className="grid items-center gap-10 py-6 lg:min-h-[560px] lg:grid-cols-[1fr_1.12fr] lg:gap-14 lg:py-10">
         <div>
-          <p className="inline-flex items-center gap-2 rounded-full border border-line-strong bg-surface px-3 py-1 text-xs font-medium text-muted">
+          <p className="inline-flex items-center gap-2 rounded-md border border-line-strong bg-surface px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-muted">
             <span className="h-1.5 w-1.5 rounded-full bg-accent" />Free during beta
           </p>
           <h1 className="mt-5 text-[44px] font-semibold leading-[1.02] tracking-[-0.045em] text-ink sm:text-6xl lg:text-7xl">
-            Pavement design,<br />layer by layer.
+            Pavement design,<br /><span className="text-primary dark:text-ink">layer by layer.</span>
           </h1>
           <p className="mt-5 max-w-xl text-base text-muted sm:text-lg">
             AASHTO 1993 flexible pavement design. Find the required structural number for every layer, choose layer
@@ -72,8 +72,8 @@ export default function HomePage() {
           ['layer-checks', '02', 'Checked layer by layer', 'Each layer must reach the SN required on the layer below it.'],
           ['exports', '03', 'Projects & exports', 'Save designs per project, see a dashboard, export to CSV or Excel.'],
         ].map(([id, number, title, text]) => (
-          <div key={id} id={id} className="shadow-card scroll-mt-24 rounded-2xl border border-line bg-surface p-6 target:ring-2 target:ring-accent">
-            <p className="num text-xs text-subtle">{number}</p>
+          <div key={id} id={id} className="shadow-card scroll-mt-24 rounded-xl border border-line border-t-2 border-t-primary bg-surface p-6 target:ring-2 target:ring-ring">
+            <p className="num inline-flex h-7 w-7 items-center justify-center rounded-md bg-primary-soft text-xs font-semibold text-primary dark:text-ink">{number}</p>
             <p className="mt-6 text-lg font-semibold tracking-[-0.02em] text-ink">{title}</p>
             <p className="mt-1.5 text-sm text-muted">{text}</p>
           </div>
@@ -81,7 +81,7 @@ export default function HomePage() {
       </section>
 
       {/* ---------- About / contact banner ---------- */}
-      <section className="relative mt-20 overflow-hidden rounded-3xl bg-panel text-on-photo">
+      <section className="relative mt-20 overflow-hidden rounded-2xl bg-panel text-on-photo">
         <ResponsivePicture name="paving-rollers" sizes="(min-width: 1280px) 1232px, 100vw"
           className="absolute inset-0 h-full w-full object-cover" />
         {/* Overlay keeps the text readable over any part of the photo. */}
@@ -95,12 +95,12 @@ export default function HomePage() {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <a href={mailto(`${SITE.name} — feedback`)}
-              className="inline-flex min-h-11 items-center gap-2 rounded-full bg-on-photo px-5 text-sm font-semibold text-scrim transition hover:bg-on-photo/90">
+              className="inline-flex min-h-11 items-center gap-2 rounded-lg bg-on-photo px-5 text-sm font-semibold text-scrim transition hover:bg-on-photo/90">
               <Mail size={16} />Email {SITE.author.split(' ')[0]}
             </a>
             {SITE.linkedin && (
               <a href={SITE.linkedin} target="_blank" rel="noopener noreferrer"
-                className="inline-flex min-h-11 items-center gap-2 rounded-full border border-on-photo/40 bg-on-photo/10 px-5 text-sm font-semibold text-on-photo backdrop-blur transition hover:bg-on-photo/20">
+                className="inline-flex min-h-11 items-center gap-2 rounded-lg border border-on-photo/40 bg-on-photo/10 px-5 text-sm font-semibold text-on-photo backdrop-blur transition hover:bg-on-photo/20">
                 <LinkedInIcon size={15} />LinkedIn
               </a>
             )}
@@ -114,7 +114,7 @@ export default function HomePage() {
 /** The dark feature card on the right of the hero: photo, overlay, wordmark and layer stack. */
 function HeroCard() {
   return (
-    <div className="shadow-float relative isolate overflow-hidden rounded-3xl bg-panel text-on-photo">
+    <div className="shadow-float relative isolate overflow-hidden rounded-2xl bg-panel text-on-photo">
       <ResponsivePicture name="paving-sunset" priority sizes="(min-width: 1024px) 55vw, 100vw"
         className="absolute inset-0 -z-10 h-full w-full object-cover" />
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-scrim/90 via-scrim/55 to-scrim/35" />
@@ -131,7 +131,7 @@ function HeroCard() {
         </div>
         <ul className="grid grid-cols-3 gap-2 text-xs sm:text-sm">
           {[['Size', 'every layer'], ['Check', 'against the layer below'], ['Export', 'PNG, SVG, Excel']].map(([title, text]) => (
-            <li key={title} className="rounded-xl border border-on-photo/15 bg-on-photo/10 px-3 py-3 backdrop-blur-md">
+            <li key={title} className="rounded-lg border border-on-photo/15 bg-on-photo/10 px-3 py-3 backdrop-blur-md">
               <p className="font-semibold">{title}</p>
               <p className="mt-0.5 text-on-photo/70">{text}</p>
             </li>
@@ -146,10 +146,10 @@ function RailTile({ href, title, background, icon, className = '' }:
   { href: string; title: string; background: ReactNode; icon?: ReactNode; className?: string }) {
   return (
     <Link href={href}
-      className={`group relative isolate flex aspect-[16/10] overflow-hidden rounded-2xl bg-panel text-on-photo shadow-card transition hover:-translate-y-0.5 lg:aspect-[4/3] ${className}`}>
+      className={`group relative isolate flex aspect-[16/10] overflow-hidden rounded-xl bg-panel text-on-photo shadow-card transition hover:-translate-y-0.5 lg:aspect-[4/3] ${className}`}>
       <div className="absolute inset-0 -z-10 transition duration-500 group-hover:scale-105">{background}</div>
       <div className="absolute inset-0 -z-10 bg-gradient-to-t from-scrim/85 via-scrim/30 to-transparent" />
-      {icon && <span className="absolute left-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-full bg-on-photo/15 backdrop-blur">{icon}</span>}
+      {icon && <span className="absolute left-4 top-4 inline-flex h-9 w-9 items-center justify-center rounded-lg bg-on-photo/15 backdrop-blur">{icon}</span>}
       <span className="mt-auto flex w-full items-end justify-between gap-2 p-4">
         <span className="text-[15px] font-semibold leading-tight">{title}</span>
         <ChevronRight size={16} className="shrink-0 opacity-70 transition group-hover:translate-x-0.5 group-hover:opacity-100" />

@@ -14,8 +14,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#e7e7e9' },
-    { media: '(prefers-color-scheme: dark)', color: '#141417' },
+    { media: '(prefers-color-scheme: light)', color: '#f5f7fa' },
+    { media: '(prefers-color-scheme: dark)', color: '#0b1220' },
   ],
 };
 
@@ -34,7 +34,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body className="flex min-h-full flex-col font-sans text-ink">
         {/* First stop for keyboard users: jump past the announcement strip and the header. */}
         <a href="#main"
-          className="sr-only rounded-full bg-primary px-4 py-2 text-sm font-semibold text-on-primary focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50">
+          className="sr-only rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-on-primary focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50">
           Skip to main content
         </a>
         <AuthProvider>

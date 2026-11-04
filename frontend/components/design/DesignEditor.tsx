@@ -116,7 +116,7 @@ export function DesignEditor({ initialInputs, initialName = '', onSave, saveLabe
 
   return (
     <div>
-      <div className="shadow-card mb-6 flex flex-wrap items-end gap-3 rounded-2xl border border-line bg-surface p-4 sm:p-5">
+      <div className="shadow-card mb-6 flex flex-wrap items-end gap-3 rounded-xl border border-line bg-surface p-4 sm:p-5">
         {onSave && (
           <label className="min-w-0 flex-1 basis-64 text-sm text-muted">
             <span className="mb-1 block">Design name</span>
@@ -188,7 +188,7 @@ function SummaryBar({ result, stale, calculating, waitedS, hasServerError, hidde
       aria-hidden={hidden}>
       <button type="button" tabIndex={hidden ? -1 : 0}
         onClick={() => document.getElementById('design-results')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-        className="shadow-float flex min-h-14 w-full items-center gap-3 rounded-2xl border border-line bg-surface px-4 py-2.5 text-left">
+        className="shadow-float flex min-h-14 w-full cursor-pointer items-center gap-3 rounded-xl border border-line bg-surface px-4 py-2.5 text-left">
         <span className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-on-panel ${iconClass}`}>
           <Icon size={18} className={tone === 'wait' && calculating ? 'animate-pulse' : ''} />
         </span>

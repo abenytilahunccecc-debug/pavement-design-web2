@@ -33,8 +33,8 @@ const asphalt = (key: LayerKey) => key === 'ac' || key === 'dbm';
 function Section({ number, title, children }: { number: number; title: string; children: React.ReactNode }) {
   return (
     <Card>
-      <h2 className="mb-4 flex items-center gap-2.5 font-semibold text-ink">
-        <span className="num inline-flex h-6 w-6 items-center justify-center rounded-full bg-primary text-xs text-on-primary">{number}</span>
+      <h2 className="-mx-5 mb-4 flex items-center gap-2.5 border-b border-line px-5 pb-3 font-semibold text-ink sm:-mx-6 sm:px-6">
+        <span className="num inline-flex h-6 w-6 items-center justify-center rounded-md bg-primary text-xs text-on-primary">{number}</span>
         {title}
       </h2>
       {children}
@@ -67,7 +67,7 @@ export function DesignInputsPanel({ inputs, result, update, setValidity }: Props
         {([['useDbmLayer', 'DBM layer (Dense Bituminous Macadam) under the AC course'],
           ['useCappingLayer', 'Capping layer above the subgrade']] as const).map(([field, label]) => (
           <label key={field} className="mb-2 flex min-h-7 cursor-pointer items-start gap-2.5 py-0.5 text-sm text-ink">
-            <input type="checkbox" className="h-5 w-5 shrink-0 accent-[var(--ink)]" checked={inputs[field]}
+            <input type="checkbox" className="h-5 w-5 shrink-0 accent-[var(--primary)]" checked={inputs[field]}
               onChange={(e) => update({ [field]: e.target.checked } as Partial<DesignInput>)} />
             {label}
           </label>
@@ -75,11 +75,11 @@ export function DesignInputsPanel({ inputs, result, update, setValidity }: Props
       </Section>
 
       <Section number={3} title="Layer support (resilient modulus)">
-        <div className="mb-3 inline-flex gap-1 rounded-full bg-raised p-1 text-sm" role="radiogroup" aria-label="Layer support input method">
+        <div className="mb-3 inline-flex gap-1 rounded-lg border border-line bg-raised p-1 text-sm" role="radiogroup" aria-label="Layer support input method">
           {([['cbr', 'From CBR'], ['mr', 'Enter MR (psi)']] as const).map(([value, label]) => (
             <button key={value} type="button" role="radio" aria-checked={inputs.mrMethod === value}
               onClick={() => update({ mrMethod: value })}
-              className={`min-h-9 rounded-full px-4 py-1.5 font-medium transition ${inputs.mrMethod === value ? 'bg-surface text-ink shadow-card' : 'text-muted hover:text-ink'}`}>
+              className={`min-h-9 cursor-pointer rounded-md px-4 py-1.5 font-medium transition ${inputs.mrMethod === value ? 'bg-surface text-ink shadow-card' : 'text-muted hover:text-ink'}`}>
               {label}
             </button>
           ))}
@@ -145,7 +145,7 @@ export function DesignInputsPanel({ inputs, result, update, setValidity }: Props
           </select>
         </label>
         <label className="flex min-h-7 cursor-pointer items-start gap-2.5 py-0.5 text-sm text-ink">
-          <input type="checkbox" className="h-5 w-5 shrink-0 accent-[var(--ink)]" checked={inputs.enforceAashtoMinimums}
+          <input type="checkbox" className="h-5 w-5 shrink-0 accent-[var(--primary)]" checked={inputs.enforceAashtoMinimums}
             onChange={(e) => update({ enforceAashtoMinimums: e.target.checked })} />
           Apply AASHTO 1993 minimum AC and base thickness for the traffic level
         </label>

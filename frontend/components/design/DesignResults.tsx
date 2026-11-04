@@ -36,7 +36,7 @@ export function DesignResults({ result, inputs, stale, setThickness, setValidity
   return (
     <div className="space-y-4" aria-live="polite">
       {/* Verdict: a dark panel (theme colours: it is lifted off the background in dark mode too). */}
-      <section ref={verdictRef} className="shadow-float overflow-hidden rounded-2xl border border-panel-line bg-panel p-5 text-on-panel sm:p-6">
+      <section ref={verdictRef} className="shadow-float overflow-hidden rounded-xl border border-panel-line bg-panel p-5 text-on-panel sm:p-6">
         <div className="flex items-start gap-3">
           <span className={`mt-0.5 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
             tone === 'ok' ? 'bg-ok-solid' : tone === 'bad' ? 'bg-bad-solid' : 'bg-warn-solid'} text-on-panel`}>
@@ -49,7 +49,7 @@ export function DesignResults({ result, inputs, stale, setThickness, setValidity
             </p>
           </div>
         </div>
-        <dl className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-xl bg-panel-line sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
+        <dl className="mt-5 grid grid-cols-2 gap-px overflow-hidden rounded-lg bg-panel-line sm:grid-cols-4 lg:grid-cols-2 xl:grid-cols-4">
           {[['Total SN', fixed(r.totalSn)], ['Required SN', fixed(r.requiredTotalSn)],
             ['Total thickness', `${fixed(r.totalThicknessMm, 1)} mm`], ['ZR', fixed(r.zr)]].map(([label, value]) => (
             <div key={label} className="bg-panel px-4 py-3">

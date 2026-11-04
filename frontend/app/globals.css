@@ -1,14 +1,21 @@
 @import "tailwindcss";
 
 /*
- * Design tokens. Components use the semantic names below (bg-surface, text-muted, border-line, …)
- * instead of raw colours, so light and dark mode are switched in one place.
+ * Design system "Blueprint" (ui-ux-pro-max: Minimalism & Swiss style for professional tools).
+ * Components use the semantic names below (bg-surface, text-muted, border-line, …) instead of raw colours,
+ * so light and dark mode are switched in one place.
+ *
+ * Colour:  navy primary (#1e3a5f) on cool slate neutrals; safety-orange accent for decoration only;
+ *          green / red only together with an icon or word (OK / NOT OK); blue for charts and focus rings.
+ * Shape:   cards and panels rounded-xl (12 px), buttons / inputs / menus rounded-lg (8 px), tags rounded-md;
+ *          circles only for icons, step numbers, dots and spinners. 1 px borders, light shadows.
+ * Spacing: 4 / 8 px scale (Tailwind); cards p-5 / sm:p-6, sections 24–80 px apart.
+ * Header:  white bar with a bottom border; the current page is marked by a navy underline.
+ * Font:    Times New Roman for all text and numbers (a system font: Windows and macOS have it;
+ *          other devices fall back to a matching serif such as Tinos / Liberation Serif).
  *
  * Theme: follows the operating system by default; the header toggle stores an explicit choice
  * in <html data-theme="light|dark">. Print always uses the light palette.
- *
- * Font: Times New Roman for all text and numbers (a system font: Windows and macOS have it;
- *       other devices fall back to a matching serif such as Tinos / Liberation Serif).
  */
 
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
@@ -27,6 +34,8 @@
   --color-line-strong: var(--line-strong);
   --color-primary: var(--primary);
   --color-primary-hover: var(--primary-hover);
+  --color-primary-soft: var(--primary-soft);
+  --color-ring: var(--ring);
   --color-on-primary: var(--on-primary);
   --color-accent: var(--accent);
   --color-ok: var(--ok);
@@ -53,19 +62,20 @@
 /* ---------- Light (default) ---------- */
 :root {
   color-scheme: light;
-  --canvas: #f2f2f3;
-  --canvas-top: #e7e7e9;
+  --canvas: #f5f7fa;
   --surface: #ffffff;
-  --raised: #f6f6f7;
-  --ink: #111113;
-  --muted: #55555d;
-  --subtle: #6b6b73;
-  --line: #e4e4e7;
-  --line-strong: #cdcdd3;
-  --primary: #111113;
-  --primary-hover: #2b2b30;
+  --raised: #f1f4f8;
+  --ink: #0f172a;
+  --muted: #475569;
+  --subtle: #64748b;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --primary: #1e3a5f;
+  --primary-hover: #162d4a;
+  --primary-soft: #e8eef6;
   --on-primary: #ffffff;
-  --accent: #e8590c;        /* hi-vis orange, from the site photos; decoration only, never body text */
+  --ring: #2563eb;
+  --accent: #ea580c;        /* safety orange (the logo's top layer); decoration only, never body text */
   --ok: #15803d;
   --ok-soft: #ecfdf3;
   --ok-solid: #16a34a;
@@ -74,34 +84,36 @@
   --bad-solid: #dc2626;
   --warn: #93370d;
   --warn-soft: #fffaeb;
-  --chart: #2f5fd0;
+  --chart: #2563eb;
   --warn-solid: #b54708;
-  --panel: #111113;
-  --panel-line: #2a2a2e;
+  --grid: rgb(30 58 95 / 0.07);
+  --panel: #13294b;
+  --panel-line: #25416b;
   --on-panel: #ffffff;
-  --on-panel-soft: #c4c4c9;
-  --on-panel-muted: #a1a1a8;
-  --shadow-card: 0 1px 2px rgb(16 16 20 / 0.04), 0 1px 1px rgb(16 16 20 / 0.03);
-  --shadow-float: 0 24px 60px -20px rgb(16 16 20 / 0.45);
+  --on-panel-soft: #c9d4e4;
+  --on-panel-muted: #a3b3cb;
+  --shadow-card: 0 1px 2px rgb(15 23 42 / 0.05), 0 1px 3px rgb(15 23 42 / 0.04);
+  --shadow-float: 0 24px 60px -20px rgb(15 23 42 / 0.4);
 }
 
 /* ---------- Dark ---------- */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --canvas: #0c0c0e;
-    --canvas-top: #141417;
-    --surface: #151518;
-    --raised: #1d1d21;
-    --ink: #f4f4f5;
-    --muted: #a9a9b2;
-    --subtle: #90909a;
-    --line: #2a2a2f;
-    --line-strong: #3b3b42;
-    --primary: #f4f4f5;
-    --primary-hover: #d9d9de;
-    --on-primary: #0c0c0e;
-    --accent: #ff7a2e;
+    --canvas: #0b1220;
+    --surface: #111a2b;
+    --raised: #17233a;
+    --ink: #e8edf5;
+    --muted: #a7b4c8;
+    --subtle: #8d9cb3;
+    --line: #22304a;
+    --line-strong: #33455f;
+    --primary: #3b6fb6;
+    --primary-hover: #4a80c9;
+    --primary-soft: rgb(96 140 210 / 0.16);
+    --on-primary: #ffffff;
+    --ring: #60a5fa;
+    --accent: #fb8c3c;
     --ok: #4ade80;
     --ok-soft: rgb(74 222 128 / 0.1);
     --ok-solid: #22c55e;
@@ -110,32 +122,34 @@
     --bad-solid: #ef4444;
     --warn: #fdb022;
     --warn-soft: rgb(253 176 34 / 0.1);
-    --chart: #7aa2ff;
+    --chart: #60a5fa;
     --warn-solid: #dc6803;
-    --panel: #202026;
-    --panel-line: #34343c;
-    --on-panel: #f4f4f5;
-    --on-panel-soft: #cfcfd4;
-    --on-panel-muted: #a9a9b2;
-    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
+    --grid: rgb(148 178 222 / 0.06);
+    --panel: #16233b;
+    --panel-line: #2b3d5d;
+    --on-panel: #eef2f8;
+    --on-panel-soft: #c6d1e1;
+    --on-panel-muted: #9eafc7;
+    --shadow-card: 0 1px 2px rgb(0 0 0 / 0.45);
     --shadow-float: 0 24px 60px -20px rgb(0 0 0 / 0.8);
   }
 }
 :root[data-theme="dark"] {
   color-scheme: dark;
-  --canvas: #0c0c0e;
-  --canvas-top: #141417;
-  --surface: #151518;
-  --raised: #1d1d21;
-  --ink: #f4f4f5;
-  --muted: #a9a9b2;
-  --subtle: #90909a;
-  --line: #2a2a2f;
-  --line-strong: #3b3b42;
-  --primary: #f4f4f5;
-  --primary-hover: #d9d9de;
-  --on-primary: #0c0c0e;
-  --accent: #ff7a2e;
+  --canvas: #0b1220;
+  --surface: #111a2b;
+  --raised: #17233a;
+  --ink: #e8edf5;
+  --muted: #a7b4c8;
+  --subtle: #8d9cb3;
+  --line: #22304a;
+  --line-strong: #33455f;
+  --primary: #3b6fb6;
+  --primary-hover: #4a80c9;
+  --primary-soft: rgb(96 140 210 / 0.16);
+  --on-primary: #ffffff;
+  --ring: #60a5fa;
+  --accent: #fb8c3c;
   --ok: #4ade80;
   --ok-soft: rgb(74 222 128 / 0.1);
   --ok-solid: #22c55e;
@@ -144,30 +158,43 @@
   --bad-solid: #ef4444;
   --warn: #fdb022;
   --warn-soft: rgb(253 176 34 / 0.1);
-  --chart: #7aa2ff;
+  --chart: #60a5fa;
   --warn-solid: #dc6803;
-  --panel: #202026;
-  --panel-line: #34343c;
-  --on-panel: #f4f4f5;
-  --on-panel-soft: #cfcfd4;
-  --on-panel-muted: #a9a9b2;
-  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.4);
+  --grid: rgb(148 178 222 / 0.06);
+  --panel: #16233b;
+  --panel-line: #2b3d5d;
+  --on-panel: #eef2f8;
+  --on-panel-soft: #c6d1e1;
+  --on-panel-muted: #9eafc7;
+  --shadow-card: 0 1px 2px rgb(0 0 0 / 0.45);
   --shadow-float: 0 24px 60px -20px rgb(0 0 0 / 0.8);
 }
 
 /* ---------- Base ---------- */
 body {
+  position: relative;
   background-color: var(--canvas);
-  /* The soft top-down grey wash of the reference design. */
-  background-image: linear-gradient(180deg, var(--canvas-top) 0, var(--canvas) 520px);
-  background-repeat: no-repeat;
   color: var(--ink);
+}
+/* Faint blueprint grid at the top of every page, fading out downwards. */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 560px;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, var(--grid) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid) 1px, transparent 1px);
+  background-size: 32px 32px;
+  mask-image: linear-gradient(to bottom, #000 0%, transparent 100%);
 }
 
 ::selection { background: color-mix(in srgb, var(--accent) 30%, transparent); }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--ring);
   outline-offset: 2px;
 }
 
@@ -192,10 +219,11 @@ body {
 @media print {
   :root, :root[data-theme="dark"] {
     color-scheme: light;
-    --canvas: #ffffff; --canvas-top: #ffffff; --surface: #ffffff; --raised: #f6f6f7;
-    --ink: #111113; --muted: #55555d; --subtle: #6b6b73; --line: #e4e4e7; --line-strong: #cdcdd3;
-    --ok: #15803d; --ok-soft: #ecfdf3; --bad: #b42318; --bad-soft: #fef3f2; --chart: #2f5fd0;
+    --canvas: #ffffff; --surface: #ffffff; --raised: #f1f4f8;
+    --ink: #0f172a; --muted: #475569; --subtle: #64748b; --line: #e2e8f0; --line-strong: #cbd5e1;
+    --ok: #15803d; --ok-soft: #ecfdf3; --bad: #b42318; --bad-soft: #fef3f2; --chart: #2563eb;
   }
   header nav, footer, button, .print-hidden { display: none !important; }
   body { background: white; }
+  body::before { display: none; }
 }

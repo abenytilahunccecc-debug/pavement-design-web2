@@ -372,9 +372,9 @@ export function CrossSectionPanel({ result, fileName = 'pavement-structure' }: {
     if (window.location.hash === '#cross-section') boxRef.current?.closest('section')?.scrollIntoView({ block: 'start' });
   }, []);
 
-  const button = 'inline-flex h-9 items-center gap-1.5 rounded-full border border-line-strong bg-surface px-3.5 text-[13px] font-semibold text-ink transition hover:bg-raised disabled:opacity-50';
+  const button = 'inline-flex h-9 cursor-pointer items-center gap-1.5 rounded-lg border border-line-strong bg-surface px-3.5 text-[13px] font-semibold text-ink transition hover:border-primary/50 hover:bg-primary-soft disabled:opacity-50';
   return (
-    <section id="cross-section" className="shadow-card scroll-mt-24 rounded-2xl border border-line bg-surface p-5 sm:p-6">
+    <section id="cross-section" className="shadow-card scroll-mt-24 rounded-xl border border-line bg-surface p-5 sm:p-6">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="font-semibold text-ink">Cross-section</h2>

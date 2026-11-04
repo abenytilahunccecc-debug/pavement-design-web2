@@ -62,7 +62,7 @@ function ProjectsContent() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {projects.map((p) => (
             <Link key={p.id} href={`/projects/${p.id}`}
-              className="shadow-card rounded-2xl border border-line bg-surface p-5 transition hover:-translate-y-0.5 hover:border-line-strong">
+              className="shadow-card rounded-xl border border-line bg-surface p-5 transition hover:-translate-y-0.5 hover:border-primary/40">
               <p className="font-semibold text-ink">{p.name}</p>
               {p.location && <p className="text-sm text-muted">{p.location}</p>}
               <p className="mt-3 text-sm text-muted">

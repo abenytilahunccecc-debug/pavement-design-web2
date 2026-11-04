@@ -43,11 +43,11 @@ export function AnnouncementBar() {
         </ul>
         <span className="flex-1 md:hidden" />
         <Link href="/calculator"
-          className="inline-flex h-7 shrink-0 items-center gap-1 rounded-full bg-on-panel px-3 text-xs font-semibold text-panel transition hover:opacity-90">
+          className="inline-flex h-7 shrink-0 items-center gap-1 rounded-md bg-on-panel px-3 text-xs font-semibold text-panel transition hover:opacity-90">
           Try the calculator <ChevronRight size={13} strokeWidth={2.4} />
         </Link>
         <button type="button" onClick={close} aria-label="Close announcement (it stays closed)"
-          className="-mr-2 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-on-panel-muted transition hover:bg-panel-line hover:text-on-panel">
+          className="-mr-2 inline-flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-md text-on-panel-muted transition hover:bg-panel-line hover:text-on-panel">
           <Close size={16} />
         </button>
       </div>
