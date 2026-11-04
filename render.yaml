@@ -6,7 +6,7 @@ services:
     name: pavement-design-api
     runtime: node
     plan: free
-    region: frankfurt   # same region as the Supabase project (Central EU / Frankfurt) for fast queries
+    region: frankfurt   # set this to the region closest to your Supabase project (oregon, ohio, virginia, frankfurt, singapore)
     rootDir: backend
     # Install (incl. dev tools needed to compile), create the Prisma client, compile TypeScript.
     buildCommand: npm ci && npx prisma generate && npm run build

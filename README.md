@@ -4,13 +4,14 @@ A web app for **AASHTO 1993 flexible pavement design**: engineers sign in, organ
 by project, design 3–5 layers with live per-layer checks, and export results to Excel or CSV.
 *Prepared by Abenezer Tilahun.*
 
-**Live app:** https://pavement-design-web-alpha.vercel.app  ·  **API:** https://pavement-design-api3.onrender.com/health
+No service addresses are stored in the code: the database, API and site addresses all come from
+environment variables (see **Deployment settings** below).
 
 | Part | Service | Updates |
 |---|---|---|
-| Frontend | Vercel project `pavement-design-web` (root `frontend`) | every push to `main` redeploys automatically |
-| Backend | Render web service `pavement-design-api3` (Frankfurt, root `backend`) | every push to `main` that changes `backend/` redeploys automatically |
-| Database | Supabase (Session pooler, EU) | migrations run automatically when the backend starts |
+| Frontend | Vercel project (root `frontend`) | every push to `main` redeploys automatically |
+| Backend | Render web service (root `backend`) | every push to `main` that changes `backend/` redeploys automatically |
+| Database | Supabase (Session pooler) | migrations create and update the tables when the backend starts |
 
 ```
  Browser ──▶ frontend/  Next.js 16 (App Router, Tailwind)        → Vercel
@@ -56,10 +57,10 @@ pavement-design-web/
 ```
 
 ### Put it on GitHub (once)
-Create an **empty private repository** on github.com (no README), then in this folder:
+Create an **empty repository** on github.com (no README), then in this folder:
 
 ```bash
-git remote add origin https://github.com/<your-user>/pavement-design-web.git
+git remote add origin https://github.com/<your-user>/<your-repo>.git
 git push -u origin main
 ```
 
@@ -73,13 +74,14 @@ Needs **Node.js 20+** and **Docker Desktop** (for the local database).
 docker compose up -d                       # 1. local PostgreSQL on port 5433
 
 cd backend
-cp .env.example .env                       # 2. local settings (already points to the Docker database)
+cp .env.example .env                       # 2. fill in: DATABASE_URL and DIRECT_URL = the Docker URL in
+                                           #    docker-compose.yml, JWT_SECRET = any long random string
 npm install                                #    also runs "prisma generate"
 npx prisma migrate deploy                  # 3. create the tables
 npm run start:dev                          # 4. API on http://localhost:4000  (try /health)
 
 cd ../frontend                             # (in a second terminal)
-cp .env.example .env.local
+cp .env.example .env.local                 #    NEXT_PUBLIC_API_URL=http://localhost:4000 (or leave empty)
 npm install
 npm run dev                                # 5. app on http://localhost:3000
 ```
@@ -101,10 +103,19 @@ Tests: `cd backend && npm test` (engine parity, 68 tests) and `npm run test:e2e`
 The summary columns let lists and the dashboard work without opening the JSON.
 
 **Create the Supabase database**
-1. supabase.com → **New project**. Region **Central EU (Frankfurt)** (same as Render in `render.yaml`) and **save the database password**.
+1. supabase.com → **New project**. Pick a region and use the **same region for Render** (`region:` in `render.yaml`),
+   and **save the database password**.
 2. Open the project → click **Connect** (top bar) → **Connection string** → **Session pooler**. Copy it:
-   `postgresql://postgres.<ref>:<password>@aws-0-<region>.pooler.supabase.com:5432/postgres`
+   `postgresql://postgres.<project-ref>:<password>@<pooler-host>:5432/postgres`
    (replace `[YOUR-PASSWORD]` with your database password).
+
+**The database structure is in the repo.** `backend/prisma/migrations/` holds every table, index, foreign key and
+the row-level-security settings as SQL. On an **empty** Supabase project you do not create anything by hand:
+Render runs `prisma migrate deploy` at start and builds it all. (There are no database functions or triggers.)
+
+**Row-level security:** all tables have RLS switched on with no policies, and the `anon` / `authenticated` roles
+have no access. Supabase's public Data API therefore can't read or change anything; only the backend can, because
+it connects as the table owner and checks the signed-in user itself.
 
 **DATABASE_URL vs DIRECT_URL**
 - `DATABASE_URL` — used by the running app → **Session pooler** string.
@@ -156,7 +167,7 @@ and run `npx prisma migrate deploy`. You don't have to, because Render does it o
 | `DIRECT_URL` | same as above on Render | migrations |
 | `JWT_SECRET` | 48 random characters | signs sign-in tokens; **keep secret** |
 | `JWT_EXPIRES_IN` | `7d` | how long a sign-in lasts |
-| `CORS_ORIGINS` | `https://pavement.vercel.app,https://pavement-*.vercel.app,http://localhost:3000` | sites allowed to call the API |
+| `CORS_ORIGINS` | `https://<your-app>.vercel.app,https://<your-app>-*.vercel.app,http://localhost:3000` | sites allowed to call the API |
 | `PORT` | `4000` | set by Render automatically |
 
 ---
@@ -210,9 +221,48 @@ Check the deploy: open `https://<service>.onrender.com/health`. It should show `
 1. vercel.com → **Add New → Project** → import the same GitHub repo.
 2. **Root Directory:** `frontend`. **Framework Preset:** Next.js (detected automatically). Leave the build settings at their defaults.
 3. **Environment Variables:** `NEXT_PUBLIC_API_URL = https://<service>.onrender.com`. Then **Deploy**.
-4. Copy your Vercel address (e.g. `https://pavement-design.vercel.app`), go back to **Render → Environment** and set
-   `CORS_ORIGINS = https://pavement-design.vercel.app,https://pavement-design-*.vercel.app,http://localhost:3000`
+4. Copy your Vercel address (e.g. `https://<your-app>.vercel.app`), go back to **Render → Environment** and set
+   `CORS_ORIGINS = https://<your-app>.vercel.app,https://<your-app>-*.vercel.app,http://localhost:3000`
    → **Save**. Render redeploys by itself.
+
+---
+
+## Deployment settings (copy these)
+
+**Render — Web Service (backend)**
+
+| Setting | Value |
+|---|---|
+| Root Directory | `backend` |
+| Build Command | `npm ci && npx prisma generate && npm run build` |
+| Start Command | `npm run start:render` |
+| Health Check Path | `/health` |
+
+| Variable | Value |
+|---|---|
+| `DATABASE_URL` | Supabase → Connect → **Session pooler** string (port 5432), with your password |
+| `DIRECT_URL` | the **same** Session pooler string |
+| `JWT_SECRET` | a long random string (Blueprint generates it) — keep secret |
+| `JWT_EXPIRES_IN` | `7d` |
+| `CORS_ORIGINS` | your Vercel address(es), comma-separated, e.g. `https://<your-app>.vercel.app,https://<your-app>-*.vercel.app` |
+| `NODE_VERSION` | `22` |
+| `PORT` | don't set — Render sets it |
+
+**Vercel — Project (frontend)**
+
+| Setting | Value |
+|---|---|
+| Root Directory | `frontend` |
+| Framework Preset | Next.js |
+| Build Command | default (`next build`) |
+| Output / Start | default (Vercel serves it; `next start` only when self-hosting) |
+
+| Variable | Value |
+|---|---|
+| `NEXT_PUBLIC_API_URL` | your Render address, e.g. `https://<service>.onrender.com` (no trailing `/`). The build stops with a message if it is missing. |
+
+Order: Supabase project → Render (with a temporary `CORS_ORIGINS=http://localhost:3000`) → Vercel (with the Render
+address) → set the real `CORS_ORIGINS` on Render.
 
 ---
 

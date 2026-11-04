@@ -14,7 +14,7 @@ import { JwtAuthGuard } from './jwt-auth.guard.js';
         if (!secret || secret.length < 16) {
           throw new Error('JWT_SECRET is missing or too short (use at least 16 random characters)');
         }
-        return { secret, signOptions: { expiresIn: (process.env.JWT_EXPIRES_IN ?? '7d') as any } };
+        return { secret, signOptions: { expiresIn: (process.env.JWT_EXPIRES_IN || '7d') as any } };
       },
     }),
   ],

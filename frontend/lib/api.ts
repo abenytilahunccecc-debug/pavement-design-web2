@@ -5,7 +5,7 @@ import type {
   SavedDesign, User,
 } from './types';
 
-export const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4000').replace(/\/+$/, '');
+export const API_URL = (process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000').replace(/\/+$/, '');
 const TOKEN_KEY = 'pavement-design-token';
 
 /** An error from the API, with the readable message(s) the backend sent. */

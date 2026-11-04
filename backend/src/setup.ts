@@ -4,7 +4,7 @@ import { INestApplication, ValidationPipe } from '@nestjs/common';
  * Turns CORS_ORIGINS ("https://app.vercel.app,https://app-*.vercel.app,http://localhost:3000")
  * into a check function. "*" matches any characters, so Vercel preview URLs can be allowed.
  */
-export function corsOriginChecker(setting = process.env.CORS_ORIGINS ?? 'http://localhost:3000') {
+export function corsOriginChecker(setting = process.env.CORS_ORIGINS || 'http://localhost:3000') {
   const patterns = setting.split(',').map((s) => s.trim().replace(/\/$/, '')).filter(Boolean)
     .map((p) => new RegExp('^' + p.split('*').map((s) => s.replace(/[.+?^${}()|[\]\\]/g, '\\$&')).join('[^/]*') + '$'));
   return (origin: string | undefined, callback: (err: Error | null, allow?: boolean) => void) => {

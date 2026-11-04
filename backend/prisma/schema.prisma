@@ -4,6 +4,10 @@
 // DATABASE_URL: used by the running app  (Supabase "Session pooler" connection string)
 // DIRECT_URL:   used by `prisma migrate`   (Supabase direct connection, or the session pooler too —
 //               see README: Render is IPv4-only and Supabase's direct host is IPv6-only)
+//
+// All tables have row-level security switched on with no policies (migration
+// *_enable_row_level_security), so Supabase's public Data API cannot read them. When you add a
+// model, add "ALTER TABLE ... ENABLE ROW LEVEL SECURITY" and the REVOKE block to its migration.
 
 generator client {
   provider = "prisma-client-js"
